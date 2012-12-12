@@ -14,8 +14,9 @@ RDEBUGRC         = ~/.rdebugrc
 POWCONFIG        = ~/.powconfig
 EDITRC           = ~/.editrc
 INPUTRC          = ~/.inputrc
+ETC_HOSTS        = /etc/hosts
 
-TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC}
+TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS}
 
 ${VIMRC_AFTER}: $(abspath vimrc.after)
 	@rm -vf $@;ln -svfn $< $@
@@ -43,6 +44,11 @@ ${EDITRC}: $(abspath editrc)
 
 ${INPUTRC}: $(abspath inputrc)
 	@rm -vf $@;ln -svfn $< $@
+
+${ETC_HOSTS}: $(abspath hosts)
+	@sudo cp -v $< $@
+	@chmod 0644 $@
+	@chown root:wheel $@
 
 install: ${TARGETS}
 
