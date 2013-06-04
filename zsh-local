@@ -11,7 +11,8 @@ if [ -e ${NVMRC} ]; then
   source ${NVMRC}
 fi
 
-export PGHOST=localhost
+source ~/bin/db_env.sh
+db_local > /dev/null
 
 export RUBY_HEAP_MIN_SLOTS=1000000
 export RUBY_HEAP_FREE_MIN=500000
