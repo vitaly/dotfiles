@@ -15,7 +15,7 @@ POWCONFIG        = ~/.powconfig
 EDITRC           = ~/.editrc
 INPUTRC          = ~/.inputrc
 
-TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC}
+TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC}
 
 ${VIMRC_AFTER}: $(abspath vimrc.after)
 	@rm -vf $@;ln -svfn $< $@
