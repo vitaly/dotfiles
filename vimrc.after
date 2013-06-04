@@ -5,13 +5,27 @@ let g:Powerline_symbols = 'fancy'
 "let g:Powerline_symbols = 'compatible'
 
 set cul
-set foldcolumn=4
+set foldcolumn=2
 
 if has('gui_running')
-  set background=dark
+  set background=light
+  "colorscheme Tomorrow
+  colorscheme Tomorrow-Night-Bright
+  "colorscheme buttercream
+  "colorscheme solarized
 else
   set background=dark
+  colorscheme Tomorrow-Night-Bright
+  "colorscheme vividchalk
 end
-"colorscheme solarized
-"colorscheme buttercream
-colorscheme vividchalk
+
+function! g:ToggleNuNode()
+  if &nu == 1
+    set rnu
+  else
+    set nu
+  endif
+endfunction
+nnoremap <localleader>l :call g:ToggleNuNode()<CR>
+
+nnoremap ` :Switch<cr>
