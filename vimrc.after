@@ -9,7 +9,7 @@ set cul
 set foldcolumn=2
 
 if has('gui_running')
-  set background=light
+  set background=dark
   "colorscheme Tomorrow
   colorscheme Tomorrow-Night-Bright
   "colorscheme buttercream
@@ -30,3 +30,7 @@ endfunction
 nnoremap <localleader>l :call g:ToggleNuNode()<CR>
 
 nnoremap ` :Switch<cr>
+
+let g:nerdtree_tabs_open_on_gui_startup = 0
+
+ino kj <esc>
