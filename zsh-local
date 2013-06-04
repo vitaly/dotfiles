@@ -1,3 +1,9 @@
+alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
+alias s3=/usr/local/bin/s3cmd
+alias rd='(source .powenv;echo using port ${RUBY_DEBUG_PORT-20000};rdebug -c -p ${RUBY_DEBUG_PORT-20000})'
+
+alias :e=vim
+
 alias bb="afplay /System/Library/Sounds/Glass.aiff"
 
 alias h=heroku
@@ -22,3 +28,9 @@ export RUBY_HEAP_FREE_MIN=500000
 export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=100000000
+
+
+AFILE=~/.zsh/aliases.sh
+if [ -e $AFILE ]; then
+  source $AFILE
+fi
