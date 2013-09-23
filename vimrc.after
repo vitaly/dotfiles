@@ -1,7 +1,8 @@
 "set guifont=Inconsolata-dz\ for\ Powerline:h16
 "set guifont=Monaco:h16
 "set guifont=Mensch\ Regular\ for\ Powerline:h16
-set guifont=Source\ Code\ Pro\ Light:h13
+"set guifont=Source\ Code\ Pro\ Light:h13
+set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h13
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_symbols = 'compatible'
 
@@ -9,15 +10,37 @@ set cul
 set foldcolumn=2
 
 if has('gui_running')
-  set background=dark
   "colorscheme Tomorrow
-  colorscheme Tomorrow-Night-Bright
+  "colorscheme Tomorrow-Night-Bright
   "colorscheme buttercream
+
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
+  colorscheme default
+
+  set background=light
+
+
+  "let g:indent_guides_auto_colors = 0
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
   "colorscheme solarized
+
+
+  "let g:indent_guides_auto_colors = 0
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=CornflowerBlue
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue
+  "colorscheme darkblue
+
 else
   set background=dark
   colorscheme Tomorrow-Night-Bright
   "colorscheme vividchalk
+
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 end
 
 function! g:ToggleNuNode()
@@ -33,4 +56,6 @@ nnoremap ` :Switch<cr>
 
 let g:nerdtree_tabs_open_on_gui_startup = 0
 
-ino kj <esc>
+inoremap kj <esc>l
+
+map ,S :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
