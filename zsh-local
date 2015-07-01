@@ -12,11 +12,6 @@ alias aria='aria2c -s 10 -x 10 -k 1M'
 
 prompt fancy
 
-NVMRC=~/.nvm/nvm.sh
-if [ -e $NVMRC ]; then
-  source $NVMRC
-fi
-
 DB_ENV_SH=~/bin/db_env.sh
 if [ -e $DB_ENV_SH ]; then
   source $DB_ENV_SH
@@ -24,6 +19,7 @@ if [ -e $DB_ENV_SH ]; then
 fi
 
 export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_GC_HEAP_INIT_SLOTS=1000000
 export RUBY_HEAP_FREE_MIN=500000
 export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
@@ -34,3 +30,17 @@ AFILE=~/.zsh/aliases.sh
 if [ -e $AFILE ]; then
   source $AFILE
 fi
+source ~/.zsh/docker.sh
+
+# shortcuts for common dirs
+source ~/.dirs.sh
+
+# .env files autoloading
+eval "$(direnv hook zsh)"
+
+export DOCKER_DOMAIN=docker
+
+# uncomment to log spring debug info
+#export SPRING_LOG=/tmp/spring.log
+
+source ~/dev/play/docker.sh/docker.sh

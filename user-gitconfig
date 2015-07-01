@@ -4,4 +4,12 @@
 [github]
 	user = vitaly
 [heroku]
+[merge]
+    tool = splice
+[mergetool "splice"]
+    cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    trustExitCode = true
+[heroku]
 	account = vitaly
+[rebase]
+	autosquash = true
