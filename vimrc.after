@@ -50,7 +50,8 @@ else
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 
-
+  "set background=dark
+  "colorscheme solarized
 
   set background=light
   colorscheme delek
