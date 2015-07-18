@@ -42,3 +42,7 @@ export DOCKER_DOMAIN=docker
 
 # uncomment to log spring debug info
 #export SPRING_LOG=/tmp/spring.log
+
+if [ -e ~/.zsh/db.sh ]; then
+  source ~/.zsh/db.sh
+fi
