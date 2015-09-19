@@ -32,7 +32,7 @@ AFILE=~/.zsh/aliases.sh
 if [ -e $AFILE ]; then
   source $AFILE
 fi
-source ~/.zsh/docker.sh
+#source ~/.zsh/docker.sh
 
 # shortcuts for common dirs
 source ~/.dirs.sh
