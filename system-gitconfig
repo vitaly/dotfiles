@@ -9,6 +9,7 @@
     ui = true
 
 [alias]
+    f = fetch -pt
     ci = commit -v
     aci = commit --amend -CHEAD
     co = checkout
