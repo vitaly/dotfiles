@@ -6,58 +6,65 @@ set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_symbols = 'compatible'
 
-set cul
+"set cul
 set foldcolumn=2
 
+""""""""""""""""""""""""""""""""""""""""""""" GUI
 if has('gui_running')
+
+  """"""""""" LIGHT THEMES
+  "set background=dark
+
   "colorscheme Tomorrow
   "colorscheme buttercream
-
-  "set background=dark
-  "colorscheme Tomorrow-Night-Bright
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray10
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray15
-
-  "set background=light
   "colorscheme delek
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
-
-  "set background=light
   "colorscheme default
+  "colorscheme solarized
+
   "let g:indent_guides_auto_colors = 0
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
 
-  set background=light
-  colorscheme solarized
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
+  """"""""""" DARK THEMES
+  set background=dark
 
-  "set background=dark
+  "colorscheme Tomorrow-Night
+  "colorscheme Tomorrow-Night-Bright
+  "colorscheme solarized
+  colorscheme vividchalk
+
   "colorscheme darkblue
   "let g:indent_guides_auto_colors = 0
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=CornflowerBlue
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue
 
+  "let g:indent_guides_auto_colors = 0
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray10
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray15
+
+
+""""""""""""""""""""""""""""""""""""""""""""" TERMINAL
 else
-  "set background=dark
+  """"""""""" LIGHT THEMES
+  "set background=light
+
+  "colorscheme delek
+  "colorscheme solarized
+
+  "let g:indent_guides_auto_colors = 0
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
+
+  """"""""""" DARK THEMES
+  set background=dark
+
   "colorscheme Tomorrow-Night-Bright
+  "colorscheme solarized
+  colorscheme vividchalk
+
   "let g:indent_guides_auto_colors = 0
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
-
-  "set background=dark
-  "colorscheme solarized
-
-  set background=light
-  colorscheme delek
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
 end
 
 function! g:ToggleNuNode()
