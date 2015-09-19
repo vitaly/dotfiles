@@ -15,9 +15,9 @@ POWCONFIG        = ~/.powconfig
 EDITRC           = ~/.editrc
 INPUTRC          = ~/.inputrc
 ETC_HOSTS        = /etc/hosts
-SLATE            = ~/.slate
+HAMMERSPOON      = ~/.hammerspoon
 
-TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS} ${SLATE}
+TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS} ${HAMMERSPOON}
 
 ${VIMRC_AFTER}: $(abspath vimrc.after)
 	@rm -vf $@;ln -svfn $< $@
@@ -51,8 +51,8 @@ ${ETC_HOSTS}: $(abspath hosts)
 	@chmod 0644 $@
 	@chown root:wheel $@
 
-${SLATE}: $(abspath slate)
-	@rm -vf $@;ln -svfn $< $@
+${HAMMERSPOON}: $(abspath hammerspoon)
+	@ln -svfn $< $@
 
 install: ${TARGETS}
 
