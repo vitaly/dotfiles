@@ -16,8 +16,9 @@ EDITRC           = ~/.editrc
 INPUTRC          = ~/.inputrc
 ETC_HOSTS        = /etc/hosts
 HAMMERSPOON      = ~/.hammerspoon
+TMUX             = ~/.tmux.conf
 
-TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS} ${HAMMERSPOON}
+TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS} ${HAMMERSPOON} ${TMUX}
 
 ${VIMRC_AFTER}: $(abspath vimrc.after)
 	@rm -vf $@;ln -svfn $< $@
@@ -52,6 +53,9 @@ ${ETC_HOSTS}: $(abspath hosts)
 	@chown root:wheel $@
 
 ${HAMMERSPOON}: $(abspath hammerspoon)
+	@ln -svfn $< $@
+
+${TMUX}: $(abspath tmux.conf)
 	@ln -svfn $< $@
 
 install: ${TARGETS}
