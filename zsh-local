@@ -1,3 +1,4 @@
+# vim: set ft=sh
 alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
 alias s3=/usr/local/bin/s3cmd
 alias rd='(source .powenv;echo using port ${RUBY_DEBUG_PORT-20000};rdebug -c -p ${RUBY_DEBUG_PORT-20000})'
@@ -53,3 +54,10 @@ function itermtheme() {
     (cd ~/d/; wget "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/$1.itermcolors")
     open ~/d/"$1".itermcolors
 }
+
+
+alias e=exercism
+
+alias powlog="tail -f ~/Library/Logs/Pow/*.log ~/Library/Logs/Pow/*/*.log log/*.log"
+
+#alias iex='rlwrap -a foo iex'
