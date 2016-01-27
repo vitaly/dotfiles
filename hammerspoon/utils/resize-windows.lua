@@ -1,9 +1,11 @@
 function resizer(f)
     return function()
         local w = hs.window.focusedWindow()
-        local frame = w:frame()
-        f(frame, w:screen():frame())
-        w:setFrame(frame)
+        if w then
+            local frame = w:frame()
+            f(frame, w:screen():frame())
+            w:setFrame(frame)
+        end
     end
 end
 
