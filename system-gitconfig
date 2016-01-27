@@ -15,10 +15,10 @@
     co = checkout
     st = status
     br = branch
-    lg   = log --graph --pretty=format:'%Cred%h %Cblue%cr %Creset-%C(yellow)%d%Creset %s %Cgreen(%an)%Creset' --abbrev-commit --date=relative
-    lgt  = log --graph --pretty=format:'%h %cr -%d %s (%an)' --abbrev-commit --date=relative
-    lga  = log --graph --pretty=format:'%Cred%h %Cblue%cr %Creset-%C(yellow)%d%Creset %s %Cgreen(%an)%Creset' --abbrev-commit --date=relative --all
-    lgat = log --graph --pretty=format:'%h %cr -%d %s (%an)' --abbrev-commit --date=relative --all
+    lg   = log --graph --pretty=format:'%Cred%h %Cblue%cd %Creset-%C(yellow)%d%Creset %s %Cgreen(%an)%Creset' --abbrev-commit --date=relative
+    lgt  = log --graph --pretty=format:'%h %cd -%d %s (%an)' --abbrev-commit --date=relative
+    lga  = log --graph --pretty=format:'%Cred%h %Cblue%cd %Creset-%C(yellow)%d%Creset %s %Cgreen(%an)%Creset' --abbrev-commit --date=relative --all
+    lgat = log --graph --pretty=format:'%h %cd -%d %s (%an)' --abbrev-commit --date=relative --all
     summ = log --pretty=format:'%h %ci -%d %s (%an)' --abbrev-commit --all --date=iso
     ls = ls-files
     d  = diff -C --stat -p
