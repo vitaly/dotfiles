@@ -94,3 +94,6 @@ inoremap kj <esc>l
 map ,S :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 set modeline
+
+" to use :Run command    - will pipe to quickfix window
+command -nargs=+ Run :cexpr system('<args>') | copen
