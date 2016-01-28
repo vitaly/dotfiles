@@ -1,5 +1,5 @@
 function hideApps()
-    local apps = {'Skype', 'Wunderlist', 'Mailplane 3', 'Slack', 'Messages', 'Spotify', 'Telegram'}
+    local apps = {'Skype', 'Wunderlist', 'Mailplane 3', 'Slack', 'Messages', 'Spotify', 'Telegram', 'Evernote'}
 
     for i, name in ipairs(apps) do
         local app = hs.application.get(name)
