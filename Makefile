@@ -5,7 +5,9 @@ help:
 	@echo When running for the first time its recommended to run clean first to remove prior existing files
 
 
-VIMRC_AFTER  = ~/.vimrc.after
+VIMRC_AFTER      = ~/.vimrc.after
+VIMRC_BUNDLES    = ~/.vimrc.bundles
+GVIMRC_AFTER     = ~/.gvimrc.after
 ZSH_LOCAL        = ~/.zsh/local
 SYSTEM_GITCONFIG = /usr/local/etc/gitconfig
 USER_GITCONFIG   = ~/.gitconfig
@@ -18,9 +20,15 @@ ETC_HOSTS        = /etc/hosts
 HAMMERSPOON      = ~/.hammerspoon
 TMUX             = ~/.tmux.conf
 
-TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS} ${HAMMERSPOON} ${TMUX}
+TARGETS := ${VIMRC_AFTER} ${VIMRC_BUNDLES} ${GVIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC} ${GEMRC} ${ETC_HOSTS} ${HAMMERSPOON} ${TMUX}
 
 ${VIMRC_AFTER}: $(abspath vimrc.after)
+	@rm -vf $@;ln -svfn $< $@
+
+${VIMRC_BUNDLES}: $(abspath vimrc.bundles)
+	@rm -vf $@;ln -svfn $< $@
+
+${GVIMRC_AFTER}: $(abspath gvimrc.after)
 	@rm -vf $@;ln -svfn $< $@
 
 ${ZSH_LOCAL}: $(abspath zsh-local)
