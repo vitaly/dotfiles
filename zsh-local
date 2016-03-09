@@ -1,4 +1,5 @@
-# vim: set ft=sh
+# vim: set filetype=sh:
+
 alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
 alias s3=/usr/local/bin/s3cmd
 alias rd='(source .powenv;echo using port ${RUBY_DEBUG_PORT-20000};rdebug -c -p ${RUBY_DEBUG_PORT-20000})'
@@ -15,7 +16,7 @@ alias vm=VBoxManage
 
 prompt fancy
 
-DB_ENV_SH=~/bin/db_env.sh
+DB_ENV_SH=~/.zsh/db_env.sh
 if [ -e $DB_ENV_SH ]; then
   source $DB_ENV_SH
   db_local > /dev/null
@@ -38,9 +39,6 @@ source ~/.zsh/docker.sh
 # shortcuts for common dirs
 source ~/.dirs.sh
 
-# .env files autoloading
-eval "$(direnv hook zsh)"
-
 export DOCKER_DOMAIN=docker
 
 # uncomment to log spring debug info
@@ -59,5 +57,26 @@ function itermtheme() {
 alias e=exercism
 
 alias powlog="tail -f ~/Library/Logs/Pow/*.log ~/Library/Logs/Pow/*/*.log log/*.log"
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+function current_ruby() {
+    local _ruby
+    _ruby="$(chruby |grep \* |tr -d '* ')"
+    if [[ $(chruby |grep -c \*) -eq 1 ]]; then
+        echo ${_ruby}
+    else
+        echo "system"
+    fi
+}
+
+function rvm()
+{
+  [ "$1" == "use" ] && shift
+  chruby "$@"
+}
+
+# .env files autoloading
+eval "$(direnv hook zsh)"
 
 #alias iex='rlwrap -a foo iex'

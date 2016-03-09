@@ -25,6 +25,7 @@
     dw = diff -C --stat -p --color-words
     dww = diff -w -C --stat -p --color-words
     dd = cat-file -p
+    tags = tag -l
 
 [push]
     default = current

@@ -11,70 +11,6 @@ set cuc
 
 set foldcolumn=2
 
-""""""""""""""""""""""""""""""""""""""""""""" GUI
-if has('gui_running')
-
-  """"""""""" LIGHT THEMES
-  "set background=dark
-
-  "colorscheme Tomorrow
-  "colorscheme buttercream
-  "colorscheme delek
-  "colorscheme default
-  "colorscheme solarized
-
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
-
-  """"""""""" DARK THEMES
-  set background=dark
-
-  "colorscheme Tomorrow-Night
-  "colorscheme Tomorrow-Night-Bright
-  "colorscheme solarized
-  colorscheme vividchalk
-
-  "colorscheme darkblue
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=CornflowerBlue
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue
-
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray10
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray15
-
-
-""""""""""""""""""""""""""""""""""""""""""""" TERMINAL
-else
-  """"""""""" LIGHT THEMES
-  "set background=light
-
-  "colorscheme delek
-  "colorscheme solarized
-
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
-
-  """"""""""" DARK THEMES
-  set background=dark
-
-  "colorscheme Tomorrow-Night-Bright
-  "colorscheme solarized
-  colorscheme vividchalk
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
-
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
-end
-
-hi Search guibg=blue ctermbg=18 guifg=yellow ctermfg=226
-
-
 function! g:ToggleNuNode()
   if &nu == 1
     set rnu
@@ -97,3 +33,47 @@ set modeline
 
 " to use :Run command    - will pipe to quickfix window
 command -nargs=+ Run :cexpr system('<args>') | copen
+
+
+nmap <leader>rr :redraw!<CR>
+
+command COL Unite -no-start-insert -auto-preview colorscheme
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if ! has('gui_running')
+
+    """"""""""" LIGHT THEMES
+    set background=light
+
+    "colorscheme delek
+    "colorscheme solarized
+    "colorscheme blue
+    colorscheme buttercream
+
+    let g:indent_guides_auto_colors = 0
+    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
+    "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
+
+    hi CursorColumn ctermbg=230
+    hi CursorLine ctermbg=230
+
+    """"""""""" DARK THEMES
+    "set background=dark
+
+    "colorscheme Tomorrow-Night-Bright
+    "colorscheme solarized
+    "colorscheme vividchalk
+
+    "let g:indent_guides_auto_colors = 0
+    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+    "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+
+
+    "hi Search ctermbg=18 ctermfg=226
+    hi Search ctermbg=226 ctermfg=18
+
+end
