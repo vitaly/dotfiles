@@ -1,2 +1,6 @@
 NeoBundle 'guns/xterm-color-table.vim'
-
+NeoBundle 'hashivim/vim-terraform'
+NeoBundle 'irrationalistic/vim-tasks'
+NeoBundle 'powerman/vim-plugin-AnsiEsc'
+NeoBundle 'slashmili/alchemist.vim'
+NeoBundle 'justinmk/vim-sneak'
