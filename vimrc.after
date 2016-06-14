@@ -37,43 +37,53 @@ command -nargs=+ Run :cexpr system('<args>') | copen
 
 nmap <leader>rr :redraw!<CR>
 
-command COL Unite -no-start-insert -auto-preview colorscheme
-
+command! COL Unite -no-start-insert -auto-preview colorscheme
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"set background=light
+set background=dark
+
 if ! has('gui_running')
 
-    """"""""""" LIGHT THEMES
-    set background=light
+    if 'light' == &background
 
-    "colorscheme delek
-    "colorscheme solarized
-    "colorscheme blue
-    colorscheme buttercream
+        """"""""""""""""""""""""""""""""""""""" LIGHT
 
-    let g:indent_guides_auto_colors = 0
-    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=234
-    "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
+        "colorscheme delek
+        "colorscheme solarized
+        "colorscheme blue
+        colorscheme buttercream
 
-    hi CursorColumn ctermbg=230
-    hi CursorLine ctermbg=230
+        let g:indent_guides_auto_colors = 0
+        hi IndentGuidesOdd  ctermbg=37
+        hi IndentGuidesEven ctermbg=38
 
-    """"""""""" DARK THEMES
-    "set background=dark
+        hi CursorColumn ctermbg=230
+        hi CursorLine cterm=NONE ctermbg=230
 
-    "colorscheme Tomorrow-Night-Bright
-    "colorscheme solarized
-    "colorscheme vividchalk
+        hi Search ctermbg=226 ctermfg=18
 
-    "let g:indent_guides_auto_colors = 0
-    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-    "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+    else
 
+        """"""""""""""""""""""""""""""""""""""" DARK
 
-    "hi Search ctermbg=18 ctermfg=226
-    hi Search ctermbg=226 ctermfg=18
+        "colorscheme Tomorrow-Night-Bright
+        "colorscheme solarized
+        colorscheme vividchalk
+
+        let g:indent_guides_auto_colors = 0
+        hi IndentGuidesOdd  ctermbg=233
+        hi IndentGuidesEven ctermbg=234
+
+        hi CursorColumn ctermbg=234
+        hi CursorLine cterm=NONE ctermbg=233
+
+        hi Search ctermbg=18 ctermfg=226
+    end
 
 end
+
+"autocmd VimEnter,Colorscheme * :hi ...
