@@ -39,3 +39,12 @@
 [diff]
     renames = copy
     wordregex = [[:alnum:]]+|[^[:space:]]
+    compactionHeuristic = 1
+
+[pager]
+    log = /usr/local/Library/LinkedKegs/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+    show = /usr/local/Library/LinkedKegs/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+    diff = /usr/local/Library/LinkedKegs/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+
+[interactive]
+    diffFilter = /usr/local/Library/LinkedKegs/git/share/git-core/contrib/diff-highlight/diff-highlight
