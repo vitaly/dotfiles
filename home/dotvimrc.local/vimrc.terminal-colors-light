@@ -1,0 +1,23 @@
+" terminal colors for light background
+
+"colorscheme delek
+"colorscheme solarized
+"colorscheme blue
+"colorscheme buttercream
+"colorscheme blue
+"colorscheme default
+
+"let g:indent_guides_auto_colors = 0
+"hi IndentGuidesOdd  ctermbg=37
+"hi IndentGuidesEven ctermbg=38
+
+" ----------------------------
+" default@blue - blue theme on the terminal + default scheme
+colorscheme default
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=20
+hi IndentGuidesEven ctermbg=26
+hi CursorColumn ctermbg=27
+
+" --------- search hilight
+"hi Search ctermbg=220 ctermfg=18

@@ -1,38 +1,15 @@
-"let g:Powerline_colorscheme = 'skwp'
+"set guifont=Inconsolata-dz\ for\ Powerline:h16
+"set guifont=Monaco:h16
+"set guifont=Mensch\ Regular\ for\ Powerline:h16
+"set guifont=Source\ Code\ Pro\ Light:h13
+set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
+
 "let g:delimitMate_expand_space = 0
 
+set background=dark
 
-  """"""""""" LIGHT THEMES
-  "set background=dark
-
-  "colorscheme Tomorrow
-  "colorscheme buttercream
-  "colorscheme delek
-  "colorscheme default
-  "colorscheme solarized
-
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
-
-  """"""""""" DARK THEMES
-  set background=dark
-
-  "colorscheme Tomorrow-Night
-  "colorscheme Tomorrow-Night-Bright
-  "colorscheme solarized
-  colorscheme vividchalk
-
-  "colorscheme darkblue
-  "let g:indent_guides_auto_colors = 0
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=CornflowerBlue
-  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue
-
-  "let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray10
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray15
-
-"hi Search guibg=blue guifg=yellow
-hi Search guibg=yellow guifg=blue
-
-""""""""""""""""""""""""""""""""""""""""""""" TERMINAL
+if 'light' == &background
+  source ~/.vimrc.local/vimrc.gui-colors-light
+else
+  source ~/.vimrc.local/vimrc.gui-colors-dark
+endif

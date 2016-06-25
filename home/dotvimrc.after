@@ -1,25 +1,7 @@
-"set guifont=Inconsolata-dz\ for\ Powerline:h16
-"set guifont=Monaco:h16
-"set guifont=Mensch\ Regular\ for\ Powerline:h16
-"set guifont=Source\ Code\ Pro\ Light:h13
-set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
-
-let g:Powerline_symbols = 'fancy'
-"let g:Powerline_symbols = 'compatible'
-
 set cul
 set cuc
 
 set foldcolumn=2
-
-function! g:ToggleNuNode()
-  if &nu == 1
-    set rnu
-  else
-    set nu
-  endif
-endfunction
-nnoremap <localleader>l :call g:ToggleNuNode()<CR>
 
 nnoremap ` :Switch<cr>
 
@@ -35,61 +17,19 @@ set modeline
 " to use :Run command    - will pipe to quickfix window
 command -nargs=+ Run :cexpr system('<args>') | copen
 
-
 nmap <leader>rr :redraw!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set background=light
-"set background=dark
-
 if ! has('gui_running')
-
-    if 'light' == &background
-
-        """"""""""""""""""""""""""""""""""""""" LIGHT
-
-        "colorscheme delek
-        "colorscheme solarized
-        "colorscheme blue
-        "colorscheme buttercream
-        "colorscheme blue
-        "colorscheme default
-
-        "let g:indent_guides_auto_colors = 0
-        "hi IndentGuidesOdd  ctermbg=37
-        "hi IndentGuidesEven ctermbg=38
-
-        " ----------------------------
-        " default@blue - blue theme on the terminal + default scheme
-        colorscheme default
-        let g:indent_guides_auto_colors = 0
-        hi IndentGuidesOdd  ctermbg=20
-        hi IndentGuidesEven ctermbg=26
-        hi CursorColumn ctermbg=27
-
-        " --------- search hilight
-        hi Search ctermbg=220 ctermfg=18
-    else
-
-        """"""""""""""""""""""""""""""""""""""" DARK
-
-        "colorscheme Tomorrow-Night-Bright
-        "colorscheme solarized
-        colorscheme vividchalk
-
-        let g:indent_guides_auto_colors = 0
-        hi IndentGuidesOdd  ctermbg=233
-        hi IndentGuidesEven ctermbg=234
-
-        hi CursorColumn ctermbg=234
-        hi CursorLine cterm=NONE ctermbg=233
-
-        hi Search ctermbg=18 ctermfg=226
-    end
-
+  set background=dark
+  if 'light' == &background
+    source ~/.vimrc.local/vimrc.terminal-colors-light
+  else
+    source ~/.vimrc.local/vimrc.terminal-colors-dark
+  end
 end
 
 "autocmd VimEnter,Colorscheme * :hi ...
