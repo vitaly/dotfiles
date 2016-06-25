@@ -3,6 +3,7 @@
 "set guifont=Mensch\ Regular\ for\ Powerline:h16
 "set guifont=Source\ Code\ Pro\ Light:h13
 set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
+
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_symbols = 'compatible'
 
@@ -27,7 +28,7 @@ let g:NERDTreeQuitOnOpen = 1
 
 inoremap kj <esc>l
 
-map ,S :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map ,Q :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 set modeline
 
@@ -37,14 +38,12 @@ command -nargs=+ Run :cexpr system('<args>') | copen
 
 nmap <leader>rr :redraw!<CR>
 
-command! COL Unite -no-start-insert -auto-preview colorscheme
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set background=light
-set background=dark
+set background=light
+"set background=dark
 
 if ! has('gui_running')
 
@@ -55,17 +54,24 @@ if ! has('gui_running')
         "colorscheme delek
         "colorscheme solarized
         "colorscheme blue
-        colorscheme buttercream
+        "colorscheme buttercream
+        "colorscheme blue
+        "colorscheme default
 
+        "let g:indent_guides_auto_colors = 0
+        "hi IndentGuidesOdd  ctermbg=37
+        "hi IndentGuidesEven ctermbg=38
+
+        " ----------------------------
+        " default@blue - blue theme on the terminal + default scheme
+        colorscheme default
         let g:indent_guides_auto_colors = 0
-        hi IndentGuidesOdd  ctermbg=37
-        hi IndentGuidesEven ctermbg=38
+        hi IndentGuidesOdd  ctermbg=20
+        hi IndentGuidesEven ctermbg=26
+        hi CursorColumn ctermbg=27
 
-        hi CursorColumn ctermbg=230
-        hi CursorLine cterm=NONE ctermbg=230
-
-        hi Search ctermbg=226 ctermfg=18
-
+        " --------- search hilight
+        hi Search ctermbg=220 ctermfg=18
     else
 
         """"""""""""""""""""""""""""""""""""""" DARK
