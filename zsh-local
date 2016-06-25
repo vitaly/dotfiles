@@ -13,6 +13,7 @@ alias hh="heroku help"
 alias aria='aria2c -s 10 -x 10 -k 1M'
 
 alias vm=VBoxManage
+alias tf=terraform
 
 prompt fancy
 
@@ -35,11 +36,6 @@ if [ -e $AFILE ]; then
   source $AFILE
 fi
 source ~/.zsh/docker.sh
-
-# shortcuts for common dirs
-source ~/.dirs.sh
-
-export DOCKER_DOMAIN=docker
 
 # uncomment to log spring debug info
 #export SPRING_LOG=/tmp/spring.log
@@ -70,13 +66,16 @@ function current_ruby() {
     fi
 }
 
-function rvm()
-{
-  [ "$1" == "use" ] && shift
-  chruby "$@"
-}
-
 # .env files autoloading
 eval "$(direnv hook zsh)"
+# make sure tmux doesn't load any of direnv stuff
+alias tmux='direnv exec / tmux'
+
+#load-nvmrc() {
+#  if [[ -f .nvmrc && -r .nvmrc ]]; then
+#    nvm use
+#  fi
+#}
+#add-zsh-hook chpwd load-nvmrc
 
 #alias iex='rlwrap -a foo iex'
