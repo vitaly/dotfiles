@@ -20,4 +20,4 @@ hi IndentGuidesEven ctermbg=26
 hi CursorColumn ctermbg=27
 
 " --------- search hilight
-"hi Search ctermbg=220 ctermfg=18
+hi Search ctermbg=220 ctermfg=18
