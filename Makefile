@@ -2,6 +2,8 @@ help:
 	@cat HELP
 .PHONY: help
 
+EUID := $(shell id -u -r)
+
 map = $(foreach a,$(2),$(call $(1),$(a)))
 
 ifeq (0,${EUID})
@@ -32,7 +34,7 @@ ${ZSH_LOCAL}: $(abspath zsh-local)
 	@rm -vf $@;ln -svfn $< $@
 
 ${SYSTEM_GITCONFIG}: $(abspath system-gitconfig)
-	@rm -vf $@;${SUDO} ln -svfn $< $@
+	@${SUDO} rm -vf $@;${SUDO} ln -svfn $< $@
 
 ${USER_GITCONFIG}: $(abspath user-gitconfig)
 	@if grep CHANGE user-gitconfig; then echo EDIT user-gitconfig; false; else ln -svfn $< $@; fi
