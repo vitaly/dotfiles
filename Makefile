@@ -4,6 +4,12 @@ help:
 
 map = $(foreach a,$(2),$(call $(1),$(a)))
 
+ifeq (0,${EUID})
+	SUDO=
+else
+	SUDO=sudo
+endif
+
 dottarget = $(subst /__,/_,$(subst /dot,/.,$1))
 dotsource = $(subst /.,/dot,$(subst /dot,/_dot,$(subst /_,/__,$1)))
 
@@ -26,18 +32,18 @@ ${ZSH_LOCAL}: $(abspath zsh-local)
 	@rm -vf $@;ln -svfn $< $@
 
 ${SYSTEM_GITCONFIG}: $(abspath system-gitconfig)
-	@rm -vf $@;sudo ln -svfn $< $@
+	@rm -vf $@;${SUDO} ln -svfn $< $@
 
 ${USER_GITCONFIG}: $(abspath user-gitconfig)
 	@if grep CHANGE user-gitconfig; then echo EDIT user-gitconfig; false; else ln -svfn $< $@; fi
 
 ${ETC_HOSTS}: $(abspath hosts)
-	@sudo cp -v $< $@
+	@${SUDO} cp -v $< $@
 	@chmod 0644 $@
 	@chown root:wheel $@
 
 install: ${HOMELINK_TARGETS} ${TARGETS}
 
 clean:
-	sudo rm -vf ${SYSTEM_GITCONFIG}
+	${SUDO} rm -vf ${SYSTEM_GITCONFIG}
 	rm -vf ${TARGETS} ${HOMELINK_TARGETS}
