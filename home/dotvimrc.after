@@ -51,3 +51,9 @@ endif
 nmap <leader>T :tabnew<cr>
 
 nmap <C-w>z  <C-w>_<C-w><Bar>
+
+let NERDTreeSortOrder=['*']
+
+nmap ,i :set paste<cr>i
+
+set cc=+1
