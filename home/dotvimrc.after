@@ -57,3 +57,10 @@ let NERDTreeSortOrder=['*']
 nmap ,i :set paste<cr>i
 
 set cc=+1
+
+nunmap <leader>t
+nmap <leader>tt :BTags<cr>
+nmap <leader>ta :Tags<cr>
+
+nmap <leader>tT :tabnew<cr>:e todo<cr>
+nmap <leader>tV :tabnew<cr>:e ~/.vimrc.after<cr>
