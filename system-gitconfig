@@ -42,9 +42,9 @@
     compactionHeuristic = 1
 
 [pager]
-    log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
-    show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
-    diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+    log = %DIFF_HIGHLIGHT% | less
+    show = %DIFF_HIGHLIGHT% | less
+    diff = %DIFF_HIGHLIGHT% | less
 
 [interactive]
-    diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+    diffFilter = %DIFF_HIGHLIGHT%
