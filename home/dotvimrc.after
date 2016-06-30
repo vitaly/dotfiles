@@ -44,7 +44,7 @@ endif
 
 if 0 ==  argc()
   if getcwd() == "/Users/vitaly/my/config/dotvim2"
-    silent OpenTabSession vim2
+    "silent OpenTabSession vim2
   endif
 endif
 

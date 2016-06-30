@@ -2,7 +2,6 @@
 
 alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
 alias s3=/usr/local/bin/s3cmd
-alias rd='(source .powenv;echo using port ${RUBY_DEBUG_PORT-20000};rdebug -c -p ${RUBY_DEBUG_PORT-20000})'
 
 alias :e=vim
 
@@ -23,18 +22,7 @@ if [ -e $DB_ENV_SH ]; then
   db_local > /dev/null
 fi
 
-export RUBY_HEAP_MIN_SLOTS=1000000
-export RUBY_GC_HEAP_INIT_SLOTS=1000000
-export RUBY_HEAP_FREE_MIN=500000
-export RUBY_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=100000000
 
-
-AFILE=~/.zsh/aliases.sh
-if [ -e $AFILE ]; then
-  source $AFILE
-fi
 source ~/.zsh/docker.sh
 
 # uncomment to log spring debug info
@@ -58,18 +46,22 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 
 function current_ruby() {
     local _ruby
-    _ruby="$(chruby |grep \* |tr -d '* ')"
-    if [[ $(chruby |grep -c \*) -eq 1 ]]; then
+    if which chruby > /dev/null; then
+      _ruby="$(chruby |grep \* |tr -d '* ')"
+      if [[ $(chruby |grep -c \*) -eq 1 ]]; then
         echo ${_ruby}
-    else
+      else
         echo "system"
+      fi
     fi
 }
 
 # .env files autoloading
-eval "$(direnv hook zsh)"
-# make sure tmux doesn't load any of direnv stuff
-alias tmux='direnv exec / tmux'
+if which direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+  # make sure tmux doesn't load any of direnv stuff
+  alias tmux='direnv exec / tmux'
+fi
 
 #load-nvmrc() {
 #  if [[ -f .nvmrc && -r .nvmrc ]]; then

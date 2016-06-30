@@ -23,7 +23,7 @@ ${HOMELINK_TARGETS}:
 	@rm -f $@
 	@ln -svfn $(call homelinksource,home/,$@) $@
 
-ZSH_LOCAL        ?= ~/.zsh/local
+ZSH_LOCAL        ?= ~/.zsh/config.d/local
 USER_GITCONFIG   ?= ~/.gitconfig
 ETC_HOSTS        ?= /etc/hosts
 
