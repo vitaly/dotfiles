@@ -79,3 +79,4 @@ alias tmux='direnv exec / tmux'
 #add-zsh-hook chpwd load-nvmrc
 
 #alias iex='rlwrap -a foo iex'
+export FZF_DEFAULT_COMMAND="ag --follow --nocolor --nogroup -g ''"
