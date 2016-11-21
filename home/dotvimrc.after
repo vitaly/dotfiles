@@ -10,7 +10,9 @@ let g:NERDTreeQuitOnOpen = 1
 
 inoremap kj <esc>l
 
-map ,Q :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" highlight helper
+map ,L :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+command! HI echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 set modeline
 
@@ -54,13 +56,32 @@ nmap <C-w>z  <C-w>_<C-w><Bar>
 
 let NERDTreeSortOrder=['*']
 
-nmap ,i :set paste<cr>i
+nmap ,i :set paste<cr>o
 
+" highlight column after textwidth
 set cc=+1
 
 nunmap <leader>t
 nmap <leader>tt :BTags<cr>
 nmap <leader>ta :Tags<cr>
 
-nmap <leader>tT :tabnew<cr>:e todo<cr>
-nmap <leader>tV :tabnew<cr>:e ~/.vimrc.after<cr>
+nmap <leader>tT :e todo<cr>
+nmap <leader>tV :e ~/.vimrc.after<cr>
+
+let g:ycm_filepath_completion_use_working_dir = 1
+
+" disable intro message
+set shortmess+=I
+
+nmap ,Q :qa<cr>
+
+set virtualedit=block
+
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+nmap <leader>H :Helptags<cr>
+
+let g:syntastic_always_populate_loc_list = 1
+
+set mouse=nvc
