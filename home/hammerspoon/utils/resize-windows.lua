@@ -42,6 +42,16 @@ resize_middle = resizer(function(f, max)
     return resize_box(f, max, (1 - w)/2, 0, w, 1)
 end)
 
+resize_left_2 = resizer(function(f, max)
+    w = resize_width(max)
+    return resize_box(f, max, 0, 0, 2 * w, 1)
+end)
+
+resize_right_2 = resizer(function(f, max)
+    w = resize_width(max)
+    return resize_box(f, max, 1 - 2 * w, 0, 2 * w, 1)
+end)
+
 resize_top = resizer(function(f, max)
     h = resize_height(max)
     return resize_box(f, max, 0, 0, 1, h)
@@ -93,8 +103,6 @@ resize_full_screen = resizer(function(f, max)
     return resize_box(f, max, 0, 0, 1, 1)
 end)
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", resize_left)
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", resize_right)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", resize_top)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", resize_bottom)
 
@@ -102,9 +110,17 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "p", resize_top_left)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "[", resize_top_middle)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "]", resize_top_right)
 
+hs.hotkey.bind({"cmd", "alt", "shift"}, "l", resize_left_2)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "l", resize_left)
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", resize_left)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, ";", resize_middle)
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", resize_right)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "'", resize_right)
+
+hs.hotkey.bind({"cmd", "alt", "shift"}, "'", resize_right_2)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, ",", resize_bottom_left)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, ".", resize_bottom_middle)
