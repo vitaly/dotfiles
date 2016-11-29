@@ -1,10 +1,33 @@
-function resizer(f)
+function resizer(handler)
     return function()
         local w = hs.window.focusedWindow()
         if w then
-            w:setFrame(f(w:frame(), w:screen():frame()))
+            local max = w:screen():frame()
+            --hs.alert.show(max, 5)
+
+            local f = w:frame()
+            --hs.alert.show(f, 5)
+
+            local new_f = handler(f, max)
+            --hs.alert.show(new_f, 5)
+
+            w:setFrame(new_f)
         end
     end
+end
+
+function show_frame()
+  local w = hs.window.focusedWindow()
+  if w then
+    hs.alert.show(w:frame())
+  end
+end
+
+function show_screen_frame()
+  local w = hs.window.focusedWindow()
+  if w then
+    hs.alert.show(w:screen():frame())
+  end
 end
 
 function resize_width(max)
@@ -68,6 +91,12 @@ resize_top_left = resizer(function(f, max)
     return resize_box(f, max, 0, 0, w, h)
 end)
 
+resize_top_left_2 = resizer(function(f, max)
+    w = resize_width(max)
+    h = resize_height(max)
+    return resize_box(f, max, 0, 0, 2 * w, h)
+end)
+
 resize_top_middle = resizer(function(f, max)
     w = resize_width(max)
     h = resize_height(max)
@@ -80,10 +109,22 @@ resize_top_right = resizer(function(f, max)
     return resize_box(f, max, 1 - w, 0, w, h)
 end)
 
+resize_top_right_2 = resizer(function(f, max)
+    w = resize_width(max)
+    h = resize_height(max)
+    return resize_box(f, max, 1 - 2 * w, 0, 2 * w, h)
+end)
+
 resize_bottom_left = resizer(function(f, max)
     w = resize_width(max)
     h = resize_height(max)
     return resize_box(f, max, 0, 1 - h, w, h)
+end)
+
+resize_bottom_left_2 = resizer(function(f, max)
+    w = resize_width(max)
+    h = resize_height(max)
+    return resize_box(f, max, 0, 1 - h, 2 * w, h)
 end)
 
 resize_bottom_middle = resizer(function(f, max)
@@ -98,6 +139,12 @@ resize_bottom_right = resizer(function(f, max)
     return resize_box(f, max, 1 - w, 1 - h, w, h)
 end)
 
+resize_bottom_right_2 = resizer(function(f, max)
+    w = resize_width(max)
+    h = resize_height(max)
+    return resize_box(f, max, 1 - 2 * w, 1 - h, 2 * w, h)
+end)
+
 
 resize_full_screen = resizer(function(f, max)
     return resize_box(f, max, 0, 0, 1, 1)
@@ -106,9 +153,13 @@ end)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", resize_top)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", resize_bottom)
 
+hs.hotkey.bind({"cmd", "alt", "shift"}, "p", resize_top_left_2)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "p", resize_top_left)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "[", resize_top_middle)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "]", resize_top_right)
+
+hs.hotkey.bind({"cmd", "alt", "shift"}, "]", resize_top_right_2)
 
 hs.hotkey.bind({"cmd", "alt", "shift"}, "l", resize_left_2)
 
@@ -122,8 +173,16 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "'", resize_right)
 
 hs.hotkey.bind({"cmd", "alt", "shift"}, "'", resize_right_2)
 
+hs.hotkey.bind({"cmd", "alt", "shift"}, ",", resize_bottom_left_2)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, ",", resize_bottom_left)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, ".", resize_bottom_middle)
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "/", resize_bottom_right)
 
+hs.hotkey.bind({"cmd", "alt", "shift"}, "/", resize_bottom_right_2)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "M", resize_full_screen)
+
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "f", show_frame)
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "s", show_screen_frame)
