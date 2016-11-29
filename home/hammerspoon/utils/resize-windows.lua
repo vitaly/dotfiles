@@ -30,16 +30,12 @@ function show_screen_frame()
   end
 end
 
-function resize_width(max)
-    if (max.w > 3000) then
-        return 1/3
-    else
-        return 1/2
-    end
+function is_big(max)
+    return max.w > 3000
 end
 
-function resize_height(max)
-    return 0.5
+function resize_width(max)
+    return is_big(max) and 1/3 or 1/2
 end
 
 function resize_box(f, max, x, y, w, h)
@@ -61,88 +57,67 @@ resize_right = resizer(function(f, max)
 end)
 
 resize_middle = resizer(function(f, max)
-    w = resize_width(max)
-    return resize_box(f, max, (1 - w)/2, 0, w, 1)
+    return resize_box(f, max, 1/3, 0, 1/3, 1)
 end)
 
 resize_left_2 = resizer(function(f, max)
-    w = resize_width(max)
-    return resize_box(f, max, 0, 0, 2 * w, 1)
+    return resize_box(f, max, 0, 0, 2/3, 1)
 end)
 
 resize_right_2 = resizer(function(f, max)
-    w = resize_width(max)
-    return resize_box(f, max, 1 - 2 * w, 0, 2 * w, 1)
+    return resize_box(f, max, 1/3, 0, 2/3, 1)
 end)
 
 resize_top = resizer(function(f, max)
-    h = resize_height(max)
-    return resize_box(f, max, 0, 0, 1, h)
+    return resize_box(f, max, 0, 0, 1, 1/2)
 end)
 
 resize_bottom = resizer(function(f, max)
-    h = resize_height(max)
-    return resize_box(f, max, 0, 1 - h, 1, h)
+    return resize_box(f, max, 0, 1/2, 1, 1/2)
 end)
 
 resize_top_left = resizer(function(f, max)
     w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 0, 0, w, h)
+    return resize_box(f, max, 0, 0, w, 1/2)
 end)
 
 resize_top_left_2 = resizer(function(f, max)
-    w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 0, 0, 2 * w, h)
+    return resize_box(f, max, 0, 0, 2/3, 1/2)
 end)
 
 resize_top_middle = resizer(function(f, max)
-    w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, (1 - w)/2, 0, w, h)
+    return resize_box(f, max, 1/3, 0, 1/3, 1/2)
 end)
 
 resize_top_right = resizer(function(f, max)
     w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 1 - w, 0, w, h)
+    return resize_box(f, max, 1 - w, 0, w, 1/2)
 end)
 
 resize_top_right_2 = resizer(function(f, max)
-    w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 1 - 2 * w, 0, 2 * w, h)
+    return resize_box(f, max, 1/3, 0, 2/3, 1/2)
 end)
 
 resize_bottom_left = resizer(function(f, max)
     w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 0, 1 - h, w, h)
+    return resize_box(f, max, 0, 1/2, w, 1/2)
 end)
 
 resize_bottom_left_2 = resizer(function(f, max)
-    w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 0, 1 - h, 2 * w, h)
+    return resize_box(f, max, 0, 1/2, 2/3, 1/2)
 end)
 
 resize_bottom_middle = resizer(function(f, max)
-    w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, (1 - w)/2, 1 - h, w, h)
+    return resize_box(f, max, 1/3, 1/2, 1/3, 1/2)
 end)
 
 resize_bottom_right = resizer(function(f, max)
     w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 1 - w, 1 - h, w, h)
+    return resize_box(f, max, 1 - w, 1/2, w, 1/2)
 end)
 
 resize_bottom_right_2 = resizer(function(f, max)
-    w = resize_width(max)
-    h = resize_height(max)
-    return resize_box(f, max, 1 - 2 * w, 1 - h, 2 * w, h)
+    return resize_box(f, max, 1/3, 1/2, 2/3, 1/2)
 end)
 
 
