@@ -1,1 +1,17 @@
 "call dein#add('')
+
+"call dein#add('guns/xterm-color-table.vim')
+"call dein#add('hashivim/vim-terraform')
+"call dein#add('irrationalistic/vim-tasks')
+"call dein#add('powerman/vim-plugin-AnsiEsc')
+"call dein#add('slashmili/alchemist.vim')
+"call dein#add('justinmk/vim-sneak')
+
+call dein#add('tsaleh/vim-align')
+"call dein#add('junegunn/vim-easy-align')
+
+call dein#add('vimwiki/vimwiki')
+call dein#add('slim-template/vim-slim')
+
+call dein#add('tpope/vim-liquid')
+call dein#add('maksimr/vim-jsbeautify')
