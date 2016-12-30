@@ -72,3 +72,6 @@ fi
 
 #alias iex='rlwrap -a foo iex'
 export FZF_DEFAULT_COMMAND="ag --follow --nocolor --nogroup -g ''"
+
+ku="/Applications/Kube-Solo.app/Contents/Resources/"
+k=kubectl
