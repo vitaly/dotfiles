@@ -3,7 +3,6 @@
 	email = vitaly@astrails.com
 [github]
 	user = vitaly
-[heroku]
 [merge]
     tool = splice
 [mergetool "splice"]

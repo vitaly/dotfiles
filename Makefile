@@ -34,12 +34,41 @@ ${USER_GITCONFIG}: $(abspath user-gitconfig)
 	@if grep CHANGE user-gitconfig; then echo EDIT user-gitconfig; false; else ln -svfn $< $@; fi
 
 ETC_HOSTS        ?= /etc/hosts
-${ETC_HOSTS}: $(abspath hosts)
-	${SUDO} cp -v $< $@
+${ETC_HOSTS}: $(abspath hosts.local) $(abspath hosts)
+	cat $^ | ${SUDO} tee $@ > /dev/null
 	@chmod 0644 $@
 	@chown root:wheel $@
 
-TARGETS := ${HOMELINK_TARGETS} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${ETC_HOSTS}
+ETC_PATHS        ?= /etc/paths
+${ETC_PATHS}: $(abspath paths)
+	cat $^ | ${SUDO} tee $@ > /dev/null
+
+
+ETC_PROFILE_D ?= /etc/profile.d
+${ETC_PROFILE_D}:
+	sudo mkdir $@
+	sudo chown root:wheel $@
+	sudo chmod 0755 $@
+
+ETC_PROFILE_D_CHRUBY ?= ${ETC_PROFILE_D}/chruby.sh
+${ETC_PROFILE_D_CHRUBY}: $(abspath chruby.sh) ${ETC_PROFILE_D}
+	sudo cp $< $@
+	sudo chown root:wheel $@
+	sudo chmod 0644 $@
+
+ETC_PROFILE_D_DIRENV ?= ${ETC_PROFILE_D}/direnv.sh
+${ETC_PROFILE_D_DIRENV}: $(abspath direnv.sh) ${ETC_PROFILE_D}
+	sudo cp $< $@
+	sudo chown root:wheel $@
+	sudo chmod 0644 $@
+
+ETC_ZPROFILE ?= /etc/zprofile
+${ETC_ZPROFILE}: $(abspath zprofile)
+	sudo cp $< $@
+	sudo chown root:wheel $@
+	sudo chmod 0644 $@
+
+TARGETS := ${HOMELINK_TARGETS} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${ETC_HOSTS} ${ETC_PATHS} ${ETC_PROFILE_D_CHRUBY} ${ETC_PROFILE_D_DIRENV} ${ETC_ZPROFILE}
 install: ${TARGETS}
 
 clean:

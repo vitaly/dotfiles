@@ -9,3 +9,8 @@
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
+
+
+
+" hi CursorColumn ctermbg=255 guibg=Grey90
+hi CursorColumn ctermbg=254

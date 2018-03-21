@@ -14,10 +14,12 @@
 " ----------------------------
 " default@blue - blue theme on the terminal + default scheme
 colorscheme default
+"colorscheme buttercream
+
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=20
 hi IndentGuidesEven ctermbg=26
-hi CursorColumn ctermbg=27
+hi CursorColumn ctermbg=255
 
 " --------- search hilight
 hi Search ctermbg=220 ctermfg=18

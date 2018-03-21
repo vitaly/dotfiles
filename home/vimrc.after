@@ -26,7 +26,7 @@ nmap <leader>rr :redraw!<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if ! has('gui_running')
-  set background=dark
+  set background=light
   if 'light' == &background
     source ~/.vimrc.local/vimrc.terminal-colors-light
   else
@@ -85,7 +85,20 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 set mouse=nvc
-set ttymouse=xterm2
 
 let g:gutentags_ctags_executable_javascript = "~/bin/jstags.sh"
 
+" nvim-only config
+if has("nvim")
+  nmap <leader>M <c-w><c-s>:te make<cr>
+  nmap <leader>Z :term zsh<cr>
+
+  highlight TermCursor ctermfg=red guifg=red
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  tnoremap <Leader><ESC> <C-\><C-n>
+
+  tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
+  tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
+  tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
+  tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
+endif
