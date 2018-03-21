@@ -15,3 +15,5 @@ call dein#add('slim-template/vim-slim')
 
 call dein#add('tpope/vim-liquid')
 call dein#add('maksimr/vim-jsbeautify')
+
+call dein#add('hecal3/vim-leader-guide')

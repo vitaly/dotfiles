@@ -2,6 +2,7 @@
 
 "colorscheme delek
 "colorscheme solarized
+colorscheme solarized8_light
 "colorscheme blue
 "colorscheme buttercream
 "colorscheme blue
@@ -11,15 +12,13 @@
 "hi IndentGuidesOdd  ctermbg=37
 "hi IndentGuidesEven ctermbg=38
 
-" ----------------------------
-" default@blue - blue theme on the terminal + default scheme
-colorscheme default
-"colorscheme buttercream
+
 
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=20
 hi IndentGuidesEven ctermbg=26
 hi CursorColumn ctermbg=255
+hi CursorLine cterm=NONE ctermbg=254
 
 " --------- search hilight
 hi Search ctermbg=220 ctermfg=18

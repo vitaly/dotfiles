@@ -11,15 +11,16 @@ let g:NERDTreeQuitOnOpen = 1
 inoremap kj <esc>l
 
 " highlight helper
-map ,L :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-command! HI echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map ,L :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+command! HI echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 set modeline
 
 " to use :Run command    - will pipe to quickfix window
 command -nargs=+ Run :cexpr system('<args>') | copen
 
-nmap <leader>rr :redraw!<CR>
+nnoremap <plug>redraw :redraw!<cr>
+nmap <leader>rr <plug>redraw
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
@@ -51,11 +52,9 @@ if 0 ==  argc()
 endif
 
 
-nmap <C-w>z  <C-w>_<C-w><Bar>
-
 let NERDTreeSortOrder=['*']
 
-nmap ,i :set paste<cr>o
+nmap <leader>i :set paste<cr>o
 
 " highlight column after textwidth
 set cc=+1
@@ -63,9 +62,7 @@ set cc=+1
 nunmap <leader>t
 nmap <leader>t :Tags<cr>
 
-nmap <localleader>T :tabnew<cr>,,
-nmap <leader>tt :tabnew<cr>:e todo<cr>
-nmap <leader>tv :tabnew<cr>:e ~/.vimrc.after<cr>
+nmap <localleader>T :tabnew<cr><space>ff
 
 let g:ycm_filepath_completion_use_working_dir = 1
 
@@ -95,10 +92,131 @@ if has("nvim")
 
   highlight TermCursor ctermfg=red guifg=red
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-  tnoremap <Leader><ESC> <C-\><C-n>
+  tnoremap <leader><ESC> <C-\><C-n>
 
   tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
   tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
   tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
   tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
 endif
+
+
+nnoremap <plug>buffer-next :bn<cr>
+nmap <leader>bn <plug>buffer-next
+
+nnoremap <plug>buffer-prev :bp<cr>
+nmap <leader>bp <plug>buffer-prev
+
+nnoremap <plug>file-save :w<cr>
+nmap <leader>fs <plug>file-save
+
+nnoremap <plug>file-save-all :wa<cr>
+nmap <leader>fS <plug>file-save-all
+
+nnoremap <plug>quit-ll :qa<cr>
+nmap <leader>qq <plug>quit-ll
+
+" [F]ile [E]dit [D]otfile
+nnoremap <plug>file-edit-dotfile :e /Users/vitaly/.vimrc.after<cr>
+nmap <leader>fed <plug>file-edit-dotfile
+
+nnoremap <plug>file-open-local-dotvim :e /Users/vitaly/.vimrc.local<cr>
+nmap <leader>fel <plug>file-open-local-dotvim
+
+
+
+
+nnoremap <plug>window-h-max    <C-w><bar>
+nnoremap <plug>window-v-max    <C-w>_
+nnoremap <plug>windows-balance <C-w>=
+nnoremap <plug>windows-swap    <C-w>x
+nnoremap <plug>window-maximize <C-w>_<C-w><Bar>
+
+nnoremap <plug>window-left     <C-h>
+nnoremap <plug>window-down     <C-j>
+nnoremap <plug>window-up       <C-k>
+nnoremap <plug>window-right    <C-l>
+
+
+nmap <C-w>z <plug>window-maximize
+
+nmap <leader>w<bar> <plug>window-h-max
+nmap <leader>w_     <plug>window-v-max
+nmap <leader>w=     <plug>windows-balance
+nmap <leader>wx     <plug>windows-swap
+nmap <leader>wz     <plug>window-maximize
+
+nmap <leader>wh     <plug>window-left
+nmap <leader>wj     <plug>window-down
+nmap <leader>wk     <plug>window-up
+nmap <leader>wl     <plug>window-right
+
+
+
+
+
+nnoremap <plug>window-h-split        :split<cr>
+nnoremap <plug>window-v-split        :vsplit<cr>
+nnoremap <plug>window-quit        :q<cr>
+nnoremap <plug>buffer-delete        :bd<cr>
+nnoremap <plug>window-only        <C-w>o
+
+
+
+" split [W]indow [H]orizontally
+nmap <leader>wh        <plug>window-h-split
+nmap <leader>w-        <plug>window-h-split
+
+" split [W]indow [V]ertically
+nmap <leader>wv        <plug>window-v-split
+nmap <leader>w<Bslash> <plug>window-v-split
+
+nmap <leader>wq        <plug>window-quit
+nmap <leader>bd        <plug>buffer-delete
+nmap <leader>wm        <plug>window-only
+
+
+nnoremap <leader><space> :
+
+
+" TODO: this should be in the fuzzy files plugin
+nnoremap <Plug>fuzzy-files :Files<CR>
+
+nmap ,, <Plug>fuzzy-files
+
+
+let g:lmap =  {}
+let g:lmap.b = { 'name' : 'Buffer Menu' }
+let g:lmap.f = { 'name' : 'File Menu' }
+let g:lmap.w = { 'name' : 'Window Menu' }
+let g:lmap.x = { 'name' : 'Text Menu' }
+let g:lmap.x.d = { 'name' : 'Delete' }
+
+let g:topdict = {}
+let g:topdict[' '] = g:lmap
+
+call leaderGuide#register_prefix_descriptions("", "g:topdict")
+
+function! s:my_displayfunc()
+  let g:leaderGuide#displayname =
+        \ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
+  let g:leaderGuide#displayname =
+        \ substitute(g:leaderGuide#displayname, '^<Plug>', '', '')
+endfunction
+let g:leaderGuide_displayfunc = [function("s:my_displayfunc")]
+
+
+
+
+
+map <leader>. <plug>leaderguide-global
+map <localleader>. <plug>leaderguide-buffer
+
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
+
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
+
+set timeoutlen=50     " give 5s to complete mapping sequence
+
