@@ -1,0 +1,3 @@
+
+* TODO remove stupid file translation
+* TODO tmux move to C-B
