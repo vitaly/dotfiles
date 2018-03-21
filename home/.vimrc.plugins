@@ -17,3 +17,5 @@ call dein#add('tpope/vim-liquid')
 call dein#add('maksimr/vim-jsbeautify')
 
 call dein#add('hecal3/vim-leader-guide')
+
+call dein#add('easymotion/vim-easymotion')
