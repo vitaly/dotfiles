@@ -117,13 +117,14 @@ nnoremap <plug>quit-ll :qa<cr>
 nmap <leader>qq <plug>quit-ll
 
 " [F]ile [E]dit [D]otfile
-nnoremap <plug>file-edit-dotfile :e /Users/vitaly/.vimrc.after<cr>
+nnoremap <plug>file-edit-dotfile :e ~/.vimrc.after<cr>
 nmap <leader>fed <plug>file-edit-dotfile
 
-nnoremap <plug>file-open-local-dotvim :e /Users/vitaly/.vimrc.local<cr>
+nnoremap <plug>file-open-local-dotvim :e ~/.vimrc.local<cr>
 nmap <leader>fel <plug>file-open-local-dotvim
 
-
+nnoremap <plug>file-edit-plugins :e ~/.vimrc.plugins<cr>
+nmap <leader>fep <plug>file-edit-plugins
 
 
 nnoremap <plug>window-h-max    <C-w><bar>
@@ -212,11 +213,11 @@ let g:leaderGuide_displayfunc = [function("s:my_displayfunc")]
 map <leader>. <plug>leaderguide-global
 map <localleader>. <plug>leaderguide-buffer
 
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
+"nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+"nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
 
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
+"vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+"vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 
 set timeoutlen=1500     " give 5s to complete mapping sequence
 
@@ -225,4 +226,8 @@ set scrolloff=999 " keep cursor line centered FTW
 
 
 
-map <Leader>j <Plug>(easymotion-prefix)
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
