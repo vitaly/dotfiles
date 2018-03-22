@@ -156,10 +156,10 @@ nmap <leader>wl     <plug>window-right
 
 
 
-nnoremap <plug>window-h-split        :split<cr>
-nnoremap <plug>window-v-split        :vsplit<cr>
-nnoremap <plug>window-quit        :q<cr>
-nnoremap <plug>buffer-delete        :bd<cr>
+nnoremap <plug>window-h-split     :split<cr><c-w>j
+nnoremap <plug>window-v-split     :vsplit<cr><c-w>l
+nnoremap <plug>window-delete      :q<cr>
+nnoremap <plug>buffer-delete      :bd<cr>
 nnoremap <plug>window-only        <C-w>o
 
 
@@ -172,7 +172,7 @@ nmap <leader>w-        <plug>window-h-split
 nmap <leader>wv        <plug>window-v-split
 nmap <leader>w<Bslash> <plug>window-v-split
 
-nmap <leader>wq        <plug>window-quit
+nmap <leader>wd        <plug>window-delete
 nmap <leader>bd        <plug>buffer-delete
 nmap <leader>wm        <plug>window-only
 
@@ -189,6 +189,7 @@ nmap ,, <Plug>fuzzy-files
 let g:lmap =  {}
 let g:lmap.b = { 'name' : 'Buffer Menu' }
 let g:lmap.f = { 'name' : 'File Menu' }
+let g:lmap.s = { 'name' : 'Search Menu' }
 let g:lmap.w = { 'name' : 'Window Menu' }
 let g:lmap.x = { 'name' : 'Text Menu' }
 let g:lmap.x.d = { 'name' : 'Delete' }
@@ -219,7 +220,7 @@ map <localleader>. <plug>leaderguide-buffer
 "vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 "vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 
-set timeoutlen=1500     " give 5s to complete mapping sequence
+set timeoutlen=5000     " give 5s to complete mapping sequence
 
 
 set scrolloff=999 " keep cursor line centered FTW
@@ -230,4 +231,23 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
+
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"inoremap <expr><tab> pumvisible() ? "\<c-y>" : "\<tab>"
+
+inoremap <expr><c-j> pumvisible() ? "\<down>" : "\<c-j>"
+inoremap <expr><c-k> pumvisible() ? "\<up>" : "\<c-k>"
+
+
+
+
+
+let g:over#command_line#search#enable_move_cursor = 1
+
+
+
+
+
+
+"inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 

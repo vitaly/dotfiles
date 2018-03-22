@@ -1,3 +1,4 @@
 
-* TODO remove stupid file translation
+* DONE remove stupid file translation
+  CLOSED: [2018-03-22 Thu 01:56]
 * TODO tmux move to C-B
