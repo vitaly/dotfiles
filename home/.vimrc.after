@@ -218,7 +218,7 @@ nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 
-set timeoutlen=500     " give 5s to complete mapping sequence
+set timeoutlen=1500     " give 5s to complete mapping sequence
 
 
 set scrolloff=999 " keep cursor line centered FTW
