@@ -249,5 +249,59 @@ let g:over#command_line#search#enable_move_cursor = 1
 
 
 
+
 "inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 
+
+
+
+
+nmap <leader>bm :messages<cr>
+
+
+
+
+
+
+function! s:checkDiffModeEnter()
+  if &diff && ! exists('b:diffMode')
+    let b:diffMode=1
+    doautocmd User DiffModeEnter
+  endif
+endfunction
+
+function! s:checkDiffModeLeave()
+  if ! &diff && exists('b:diffMode')
+    unlet b:diffMode
+    doautocmd User DiffModeLeave
+  endif
+endfunction
+
+function! s:onDiffModeEnter()
+  echom "diff enter"
+
+  nmap <buffer> <localleader>du :diffupdate<CR>
+  nmap <buffer> <localleader>dp :diffput<CR>
+  nmap <buffer> <localleader>dg :diffget<CR>
+  nmap <buffer> <localleader>n ]c
+  nmap <buffer> <localleader>p [c
+endfunction
+
+function! s:onDiffModeLeave()
+    echom "diff leave"
+
+  nunmap <buffer> <localleader>du
+  nunmap <buffer> <localleader>dp
+  nunmap <buffer> <localleader>dg
+  nunmap <buffer> <localleader>n
+  nunmap <buffer> <localleader>p
+endfunction
+
+augroup diffbindings
+  au!
+  au FilterWritePre          * call s:checkDiffModeEnter()
+  au FilterWritePre,BufWrite * call s:checkDiffModeLeave()
+
+  au User DiffModeEnter call s:onDiffModeEnter()
+  au User DiffModeLeave call s:onDiffModeLeave()
+augroup END
