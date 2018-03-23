@@ -65,7 +65,7 @@ TARGETS += ${SYSTEM_GITCONFIG}
 
 USER_GITCONFIG   ?= ~/.gitconfig
 ${USER_GITCONFIG}: git/user-gitconfig
-	@if grep CHANGE $<; then echo EDIT user-gitconfig; false; else ln -svfn $< $@; fi
+	@if grep CHANGE $<; then echo EDIT user-gitconfig; false; else ln -svfn $(abspath $<) $@; fi
 TARGETS += ${USER_GITCONFIG}
 
 install: ${TARGETS}
