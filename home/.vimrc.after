@@ -107,8 +107,8 @@ nmap <leader>bn <plug>buffer-next
 nnoremap <plug>buffer-prev :bp<cr>
 nmap <leader>bp <plug>buffer-prev
 
-nnoremap <plug>file-save :w<cr>
-nmap <leader>fs <plug>file-save
+nnoremap <plug>file-save-one :w<cr>
+nmap <leader>fs <plug>file-save-one
 
 nnoremap <plug>file-save-all :wa<cr>
 nmap <leader>fS <plug>file-save-all
@@ -223,7 +223,7 @@ map <localleader>. <plug>leaderguide-buffer
 set timeoutlen=5000     " give 5s to complete mapping sequence
 
 
-set scrolloff=999 " keep cursor line centered FTW
+set scrolloff=5 " keep cursor line centered FTW
 
 
 
@@ -232,8 +232,8 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"inoremap <expr><tab> pumvisible() ? "\<c-y>" : "\<tab>"
+"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><tab> pumvisible() ? "\<c-y>" : "\<tab>"
 
 inoremap <expr><c-j> pumvisible() ? "\<down>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<up>" : "\<c-k>"

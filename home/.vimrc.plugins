@@ -20,8 +20,6 @@ call dein#add('maksimr/vim-jsbeautify')
 call dein#add('hecal3/vim-leader-guide')
 
 
-call dein#add('osyo-manga/vim-over')
-
 "call dein#add('easymotion/vim-easymotion')
 "map <Leader>j <Plug>(easymotion-prefix)
 
@@ -49,36 +47,39 @@ if !has('nvim')
 endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
+"call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 
 
 " https://github.com/Shougo/neco-vim
-call dein#add('Shougo/neco-vim')
+"call dein#add('Shougo/neco-vim')
 
 " https://github.com/thalesmello/webcomplete.vim
-call dein#add('thalesmello/webcomplete.vim')
+"call dein#add('thalesmello/webcomplete.vim')
 
-call dein#add('kbrw/elixir.nvim')
+"call dein#add('kbrw/elixir.nvim')
 
 " https://github.com/castwide/solargraph
 "call dein#add('uplus/deoplete-solargraph')
 "call dein#add('hackhowtofaq/vim-solargraph')
-
-
-call dein#add('wellle/tmux-complete.vim')
+"
+"call dein#add('wellle/tmux-complete.vim')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call dein#add('haya14busa/incsearch.vim')
 call dein#add('haya14busa/incsearch-fuzzy.vim')
 map /   <Plug>(incsearch-forward)
 map ?   <Plug>(incsearch-backward)
+map g/  <Plug>(incsearch-stay)
 map z/  <Plug>(incsearch-fuzzy-/)
 map z?  <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+call dein#add('osyo-manga/vim-over')
+let g:over#command_line#paste_escape_chars = '/.*$^~['
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 
