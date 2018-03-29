@@ -1,0 +1,123 @@
+messages clear
+
+let s:onFix=''
+
+fu! s:fix()
+  if s:onFix != ''
+    exe s:onFix
+  endif
+endfu
+
+augroup colorschemeFixes
+  au!
+  au ColorScheme * call s:fix()
+augroup END
+
+fu! s:jellybeans()
+  hi CursorLine ctermbg=238
+  hi CursorColumn ctermbg=238
+  hi Search ctermbg=220 ctermfg=0
+endfu
+
+fu! s:onedark()
+  hi CursorLine ctermbg=237
+  hi CursorColumn ctermbg=237
+
+  hi Search ctermbg=220
+  hi Visual ctermbg=18
+
+  hi TabLine cterm=NONE ctermfg=245  ctermbg=0
+  hi TabLineSel cterm=bold ctermfg=11
+  hi TabLineFill ctermbg=0
+endfu
+
+fu! s:default()
+  hi CursorLine cterm=NONE ctermbg=254
+  hi CursorColumn ctermbg=254
+  " hi TabLine
+  " hi TabLineSel
+endfu
+
+fu! Theme(name)
+  let s:onFix='call s:' . a:name . '()'
+  exe 'colorscheme ' . a:name
+endfu
+
+
+
+" exe 'hi IndentGuidesOdd  guibg=' . a:odd
+" exe 'hi IndentGuidesEven guibg=' . a:even
+" exe 'hi IndentGuidesOdd  ctermbg=' . a:odd
+" exe 'hi IndentGuidesEven ctermbg=' . a:even
+
+" hi Search  ctermbg=220 ctermfg=0
+"colorscheme darkblue
+"let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=CornflowerBlue
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue
+
+"let g:indent_guides_auto_colors = 0
+"hi IndentGuidesOdd  guibg=gray10
+"hi IndentGuidesEven guibg=gray15
+
+"hi Search guibg=blue guifg=yellow
+"hi Search guibg=yellow guifg=blue
+"
+"colorscheme Tomorrow-Night
+"colorscheme Tomorrow-Night-Bright
+"colorscheme solarized
+"colorscheme vividchalk
+"
+
+"colorscheme Tomorrow
+"colorscheme buttercream
+"colorscheme delek
+"colorscheme default
+"colorscheme solarized
+"solarized8_light
+
+"let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray96
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray94
+
+
+
+" hi CursorColumn ctermbg=255 guibg=Grey90
+" hi CursorColumn ctermbg=254
+" terminal colors for dark background
+
+"colorscheme Tomorrow-Night-Bright
+"colorscheme solarized
+"colorscheme vividchalk
+
+"let g:indent_guides_auto_colors = 0
+
+"hi IndentGuidesOdd  ctermbg=233
+"hi IndentGuidesEven ctermbg=234
+
+"hi CursorColumn ctermbg=234
+"hi CursorLine cterm=NONE ctermbg=233
+
+"hi Search ctermbg=18 ctermfg=226
+"
+"colorscheme delek
+"colorscheme solarized
+" colorscheme solarized8_light
+"colorscheme blue
+"colorscheme buttercream
+"colorscheme blue
+"colorscheme default
+
+"let g:indent_guides_auto_colors = 0
+"hi IndentGuidesOdd  ctermbg=37
+"hi IndentGuidesEven ctermbg=38
+
+
+
+" let g:indent_guides_auto_colors = 0
+" hi IndentGuidesOdd  ctermbg=20
+" hi IndentGuidesEven ctermbg=26
+" hi CursorColumn ctermbg=254
+" hi CursorLine cterm=NONE ctermbg=254
+
+" hi Search ctermbg=220 ctermfg=18

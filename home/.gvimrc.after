@@ -2,14 +2,5 @@
 "set guifont=Monaco:h16
 "set guifont=Mensch\ Regular\ for\ Powerline:h16
 "set guifont=Source\ Code\ Pro\ Light:h13
-set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
 
 "let g:delimitMate_expand_space = 0
-
-set background=dark
-
-if 'light' == &background
-  source ~/.vimrc.local/vimrc.gui-colors-light
-else
-  source ~/.vimrc.local/vimrc.gui-colors-dark
-endif

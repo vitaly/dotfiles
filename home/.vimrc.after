@@ -26,6 +26,12 @@ nmap <leader>rr <plug>redraw
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+so ~/.vimrc.local/vimrc.colors
+if has('gui_running')
+  set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
+  " source ~/.vimrc.local/vimrc.gui.light
+  source ~/.vimrc.local/vimrc.gui.dark
+else
 if ! has('gui_running')
   set background=light
   if 'light' == &background
@@ -34,6 +40,9 @@ if ! has('gui_running')
     source ~/.vimrc.local/vimrc.terminal-colors-dark
   end
 end
+
+" AirlineTheme light
+AirlineTheme cool
 
 "autocmd VimEnter,Colorscheme * :hi ...
 
