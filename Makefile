@@ -1,4 +1,3 @@
-foo::
 help:
 	@cat HELP
 .PHONY: help
@@ -17,7 +16,6 @@ ${HOME}/% : home/%
 	ln -svfn $(abspath $<) $@
 HOMELINK_TARGETS := $(patsubst home/%,${HOME}/%,$(shell find home -maxdepth 1))
 TARGETS += ${HOMELINK_TARGETS}
-
 
 ${HOME}/.zsh/% : zsh/%
 	rm -f $@
@@ -43,13 +41,11 @@ $(patsubst etc/%,/etc/%,$(wildcard etc/profile.d/*)): /etc/profile.d
 ETC_TARGETS := $(patsubst etc/%,/etc/%,$(shell find etc -type f))
 TARGETS += ${ETC_TARGETS}
 
-
 /etc/hosts: hosts.local hosts
 	cat $^ | ${SUDO} tee $@ > /dev/null
 	chmod 0644 $@
 	chown root:wheel $@
 TARGETS += /etc/hosts
-
 
 DIFF_HIGHLIGHT ?= $(firstword $(wildcard /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight))
 ifeq (,${DIFF_HIGHLIGHT})
@@ -79,5 +75,13 @@ tmux/plugins/tpm:
 	git clone https://github.com/tmux-plugins/tpm $@
 
 TARGETS += ~/.tmux ~/.tmux.conf tmux/plugins/tpm
+
+~/.config:
+	mkdir -p $@
+	chmod 0755 $@
+
+~/.config/nvim: nvim ~/.config
+	ln -sfn $(abspath $<) $@
+TARGETS += ~/.config/nvim
 
 install: ${TARGETS}
