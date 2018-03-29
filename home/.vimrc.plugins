@@ -100,7 +100,8 @@ call dein#add('neomake/neomake')
 
 call dein#add('joshdick/onedark.vim')
 
-"call dein#add('')
+call dein#add('tmux-plugins/vim-tmux-focus-events')
+
 "call dein#add('')
 "call dein#add('')
 "call dein#add('')
