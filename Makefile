@@ -68,4 +68,17 @@ ${USER_GITCONFIG}: git/user-gitconfig
 	@if grep CHANGE $<; then echo EDIT user-gitconfig; false; else ln -svfn $(abspath $<) $@; fi
 TARGETS += ${USER_GITCONFIG}
 
+~/.tmux: tmux
+	rm -f $@
+	ln -svfn $(abspath $<) $@
+~/.tmux.conf: tmux/tmux.conf
+	rm -f $@
+	ln -svfn $(abspath $<) $@
+tmux/plugins:
+	mkdir $@
+tmux/plugins/tpm: tmux/plugins
+	git clone https://github.com/tmux-plugins/tpm $@
+
+TARGETS += ~/.tmux ~/.tmux.conf tmux/plugins/tpm
+
 install: ${TARGETS}
