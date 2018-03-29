@@ -74,9 +74,8 @@ TARGETS += ${USER_GITCONFIG}
 ~/.tmux.conf: tmux/tmux.conf
 	rm -f $@
 	ln -svfn $(abspath $<) $@
-tmux/plugins:
-	mkdir $@
-tmux/plugins/tpm: tmux/plugins
+tmux/plugins/tpm:
+	mkdir -p tmux/plugins
 	git clone https://github.com/tmux-plugins/tpm $@
 
 TARGETS += ~/.tmux ~/.tmux.conf tmux/plugins/tpm
