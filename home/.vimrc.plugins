@@ -1,5 +1,5 @@
 "call dein#add('')
-
+"
 "call dein#add('guns/xterm-color-table.vim')
 "call dein#add('hashivim/vim-terraform')
 "gcall dein#add('irrationalistic/vim-tasks')
@@ -81,8 +81,25 @@ let g:over#command_line#paste_escape_chars = '/.*$^~['
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:NERDCustomDelimiters = { 'q': { 'left': '/' } }
+
+augroup qMode
+  au!
+  au BufEnter q set foldmethod=indent
+augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+
+call dein#add('tpope/vim-projectionist')
+
+
+call dein#add('neomake/neomake')
+
+
+call dein#add('joshdick/onedark.vim')
+
 "call dein#add('')
 "call dein#add('')
 "call dein#add('')
@@ -94,6 +111,4 @@ let g:over#command_line#paste_escape_chars = '/.*$^~['
 "call dein#add('')
 "call dein#add('')
 "call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
+"

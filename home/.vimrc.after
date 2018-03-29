@@ -3,6 +3,9 @@ set cuc
 
 set foldcolumn=2
 
+set concealcursor=n
+set conceallevel=2
+
 nnoremap ` :Switch<cr>
 
 let g:nerdtree_tabs_open_on_gui_startup = 0
@@ -17,7 +20,7 @@ command! HI echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tran
 set modeline
 
 " to use :Run command    - will pipe to quickfix window
-command -nargs=+ Run :cexpr system('<args>') | copen
+" command -nargs=+ Run :cexpr system('<args>') | copen
 
 nnoremap <plug>redraw :redraw!<cr>
 nmap <leader>rr <plug>redraw
@@ -32,13 +35,8 @@ if has('gui_running')
   " source ~/.vimrc.local/vimrc.gui.light
   source ~/.vimrc.local/vimrc.gui.dark
 else
-if ! has('gui_running')
-  set background=light
-  if 'light' == &background
-    source ~/.vimrc.local/vimrc.terminal-colors-light
-  else
-    source ~/.vimrc.local/vimrc.terminal-colors-dark
-  end
+  " source ~/.vimrc.local/vimrc.term.light
+  source ~/.vimrc.local/vimrc.term.dark
 end
 
 " AirlineTheme light
@@ -96,17 +94,11 @@ let g:gutentags_ctags_executable_javascript = "~/bin/jstags.sh"
 
 " nvim-only config
 if has("nvim")
-  nmap <leader>M <c-w><c-s>:te make<cr>
   nmap <leader>Z :term zsh<cr>
 
   highlight TermCursor ctermfg=red guifg=red
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   tnoremap <leader><ESC> <C-\><C-n>
-
-  tnoremap <C-h> <C-\><C-n>:TmuxNavigateLeft<cr>
-  tnoremap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
-  tnoremap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
-  tnoremap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
 endif
 
 
@@ -137,31 +129,47 @@ nmap <leader>fep <plug>file-edit-plugins
 
 
 nnoremap <plug>window-h-max    <C-w><bar>
+nmap     <leader>w<bar>        <plug>window-h-max
+
 nnoremap <plug>window-v-max    <C-w>_
+nmap     <leader>w_            <plug>window-v-max
+
 nnoremap <plug>windows-balance <C-w>=
+nmap     <leader>w=            <plug>windows-balance
+
 nnoremap <plug>windows-swap    <C-w>x
+nmap     <leader>wx            <plug>windows-swap
+
 nnoremap <plug>window-maximize <C-w>_<C-w><Bar>
-
-nnoremap <plug>window-left     <C-h>
-nnoremap <plug>window-down     <C-j>
-nnoremap <plug>window-up       <C-k>
-nnoremap <plug>window-right    <C-l>
+nmap     <leader>wz            <plug>window-maximize
+nmap     <C-w>z                <plug>window-maximize
 
 
-nmap <C-w>z <plug>window-maximize
 
-nmap <leader>w<bar> <plug>window-h-max
-nmap <leader>w_     <plug>window-v-max
-nmap <leader>w=     <plug>windows-balance
-nmap <leader>wx     <plug>windows-swap
-nmap <leader>wz     <plug>window-maximize
+nmap <plug>window-up    :TmuxNavigateUp<CR>
+nmap <leader>wk         <plug>window-up
 
-nmap <leader>wh     <plug>window-left
-nmap <leader>wj     <plug>window-down
-nmap <leader>wk     <plug>window-up
-nmap <leader>wl     <plug>window-right
+nmap <plug>window-down  :TmuxNavigateDown<CR>
+nmap <leader>wj         <plug>window-down
+
+nmap <plug>window-left  :TmuxNavigateLeft<CR>
+nmap <leader>wh         <plug>window-left
+
+nmap <plug>window-right :TmuxNavigateRight<CR>
+nmap <leader>wl         <plug>window-right
 
 
+nmap <plug>window-move-up    <c-w>K
+nmap <leader>wK              <plug>window-move-up
+
+nmap <plug>window-move-down  <c-w>J
+nmap <leader>wJ              <plug>window-move-down
+
+nmap <plug>window-move-left  <c-w>H
+nmap <leader>wH              <plug>window-move-left
+
+nmap <plug>window-move-right <c-w>L
+nmap <leader>wL              <plug>window-move-right
 
 
 
@@ -174,7 +182,7 @@ nnoremap <plug>window-only        <C-w>o
 
 
 " split [W]indow [H]orizontally
-nmap <leader>wh        <plug>window-h-split
+nmap <leader>ws        <plug>window-h-split
 nmap <leader>w-        <plug>window-h-split
 
 " split [W]indow [V]ertically
@@ -182,8 +190,11 @@ nmap <leader>wv        <plug>window-v-split
 nmap <leader>w<Bslash> <plug>window-v-split
 
 nmap <leader>wd        <plug>window-delete
+nmap <leader>wq        <plug>window-delete
+nmap <leader>qw        <plug>window-delete
 nmap <leader>bd        <plug>buffer-delete
 nmap <leader>wm        <plug>window-only
+nmap <leader>wo        <plug>window-only
 
 
 nnoremap <leader><space> :
@@ -197,6 +208,7 @@ nmap ,, <Plug>fuzzy-files
 
 let g:lmap =  {}
 let g:lmap.b = { 'name' : 'Buffer Menu' }
+let g:lmap.b = { 'name' : 'Comments' }
 let g:lmap.f = { 'name' : 'File Menu' }
 let g:lmap.s = { 'name' : 'Search Menu' }
 let g:lmap.w = { 'name' : 'Window Menu' }
@@ -223,13 +235,16 @@ let g:leaderGuide_displayfunc = [function("s:my_displayfunc")]
 map <leader>. <plug>leaderguide-global
 map <localleader>. <plug>leaderguide-buffer
 
-"nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-"nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
+
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
 
 "vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 "vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 
-set timeoutlen=5000     " give 5s to complete mapping sequence
+set timeoutlen=500
+
+"set timeoutlen=5000     " give 5s to complete mapping sequence
 
 
 set scrolloff=5 " keep cursor line centered FTW
@@ -244,11 +259,16 @@ map T <Plug>Sneak_T
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><tab> pumvisible() ? "\<c-y>" : "\<tab>"
 
-inoremap <expr><c-j> pumvisible() ? "\<down>" : "\<c-j>"
-inoremap <expr><c-k> pumvisible() ? "\<up>" : "\<c-k>"
+" inoremap <expr><c-j> pumvisible() ? "\<down>" : "\<c-j>"
+" inoremap <expr><c-k> pumvisible() ? "\<up>" : "\<c-k>"
 
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
 
-
+cnoremap <c-k> <up>
+cnoremap <c-j> <down>
 
 
 let g:over#command_line#search#enable_move_cursor = 1
@@ -314,3 +334,76 @@ augroup diffbindings
   au User DiffModeEnter call s:onDiffModeEnter()
   au User DiffModeLeave call s:onDiffModeLeave()
 augroup END
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" ORG MODE """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:org_todo_keywords = [['TODO', 'NOW', 'NEXT', 'WAIT', '|', 'DONE', 'SKIP', 'CANCELED', 'ARCHIVED']]
+let g:org_todo_keyword_faces = [
+      \ ['WAIT', 'red'],
+      \ ['NEXT', 'blue'],
+      \ ['SKIP', 'yellow'],
+      \ ['CANCELED', 'grey'],
+      \]
+
+au FileType org nmap <buffer> <localleader>tn <Plug>OrgTodoForward
+au FileType org nmap <buffer> <localleader>tp <Plug>OrgTodoBackward
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call neomake#configure#automake('rw', 1000)
+"let &errorformat ='%-C,%E  [%n] %#%f:%l: %.%#,%C%m,%Z%p^'
+
+set makeprg=make
+nmap <localleader>m :Neomake!<cr>
+  nmap <leader>M <c-w><c-s>:te make<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! -bar -bang IMaps                               call fzf#vim#maps("i", <bang>0)
+command! -bar -bang OMaps                               call fzf#vim#maps("o", <bang>0)
+command! -bar -bang VMaps                               call fzf#vim#maps("x", <bang>0)
+command! -bar -bang CMaps                               call fzf#vim#maps("c", <bang>0)
+
+
+
+nmap <leader>?  <plug>(fzf-maps-n)
+xmap <leader>?  <plug>(fzf-maps-x)
+omap <leader>?  <plug>(fzf-maps-o)
+imap <c-x><tab> <plug>(fzf-maps-i)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
