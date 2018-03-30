@@ -1,6 +1,7 @@
 set cul
 set cuc
 
+set clipboard=unnamedplus
 set foldcolumn=2
 
 set concealcursor=n
@@ -78,7 +79,7 @@ set shortmess+=I
 
 nmap ,Q :qa<cr>
 
-set virtualedit=block
+set virtualedit=all
 
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
@@ -236,15 +237,15 @@ map <leader>. <plug>leaderguide-global
 map <localleader>. <plug>leaderguide-buffer
 
 
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
+" nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+" nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
 
 "vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 "vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 
-set timeoutlen=500
+" set timeoutlen=500
 
-"set timeoutlen=5000     " give 5s to complete mapping sequence
+set timeoutlen=5000     " give 5s to complete mapping sequence
 
 
 set scrolloff=5 " keep cursor line centered FTW
