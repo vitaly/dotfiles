@@ -76,11 +76,9 @@ tmux/plugins/tpm:
 
 TARGETS += ~/.tmux ~/.tmux.conf tmux/plugins/tpm
 
-~/.config:
+~/.config/nvim: nvim
 	mkdir -p $@
 	chmod 0755 $@
-
-~/.config/nvim: nvim ~/.config
 	ln -sfn $(abspath $<) $@
 TARGETS += ~/.config/nvim
 
