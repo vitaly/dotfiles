@@ -11,10 +11,10 @@ endif
 
 TARGETS =
 
-${HOME}/% : home/%
+${HOME}/.% : home/%
 	rm -f $@
 	ln -svfn $(abspath $<) $@
-HOMELINK_TARGETS := $(patsubst home/%,${HOME}/%,$(shell find home -maxdepth 1))
+HOMELINK_TARGETS := $(patsubst home/%,${HOME}/.%,$(shell find home -maxdepth 1))
 TARGETS += ${HOMELINK_TARGETS}
 
 ${HOME}/.zsh/% : zsh/%
