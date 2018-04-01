@@ -42,6 +42,7 @@ end
 
 " AirlineTheme light
 AirlineTheme cool
+" AirlineTheme one
 
 "autocmd VimEnter,Colorscheme * :hi ...
 
@@ -67,8 +68,8 @@ nmap <leader>i :set paste<cr>o
 " highlight column after textwidth
 set cc=+1
 
-nunmap <leader>t
-nmap <leader>t :Tags<cr>
+" nunmap <leader>t
+" nmap <leader>t :Tags<cr>
 
 nmap <localleader>T :tabnew<cr><space>ff
 
@@ -208,13 +209,15 @@ nmap ,, <Plug>fuzzy-files
 
 
 let g:lmap =  {}
-let g:lmap.b = { 'name' : 'Buffer Menu' }
-let g:lmap.b = { 'name' : 'Comments' }
-let g:lmap.f = { 'name' : 'File Menu' }
-let g:lmap.s = { 'name' : 'Search Menu' }
-let g:lmap.w = { 'name' : 'Window Menu' }
-let g:lmap.x = { 'name' : 'Text Menu' }
-let g:lmap.x.d = { 'name' : 'Delete' }
+let g:lmap.b   = { 'name': 'Buffers'  }
+let g:lmap.b   = { 'name': 'Comments' }
+let g:lmap.f   = { 'name': 'Files'    }
+let g:lmap.s   = { 'name': 'Search'   }
+let g:lmap.s.t = { 'name': 'Tags'     }
+let g:lmap.w   = { 'name': 'Windows/Wiki'  }
+let g:lmap.t   = { 'name': 'Tags'     }
+let g:lmap.x   = { 'name': 'Text'     }
+let g:lmap.x.d = { 'name': 'Delete'   }
 
 let g:topdict = {}
 let g:topdict[' '] = g:lmap
@@ -257,8 +260,9 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
-"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><tab> pumvisible() ? "\<c-y>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" inoremap <expr><tab> pumvisible() ? "\<c-y>" : "\<tab>"
 
 " inoremap <expr><c-j> pumvisible() ? "\<down>" : "\<c-j>"
 " inoremap <expr><c-k> pumvisible() ? "\<up>" : "\<c-k>"
@@ -370,7 +374,9 @@ command! -bar -bang OMaps                               call fzf#vim#maps("o", <
 command! -bar -bang VMaps                               call fzf#vim#maps("x", <bang>0)
 command! -bar -bang CMaps                               call fzf#vim#maps("c", <bang>0)
 
+let g:UltiSnipsSnippetsDir = "~/my/config/ultisnips/"
 
+let g:SuperTabDefaultCompletionType = "context"
 
 nmap <leader>?  <plug>(fzf-maps-n)
 xmap <leader>?  <plug>(fzf-maps-x)
@@ -379,9 +385,27 @@ imap <c-x><tab> <plug>(fzf-maps-i)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-wiki
+hi VimwikiHeader1 ctermfg=1
+hi VimwikiHeader2 ctermfg=2
+hi VimwikiHeader3 ctermfg=3
+hi VimwikiHeader4 ctermfg=4
+hi VimwikiHeader5 ctermfg=5
+hi VimwikiHeader6 ctermfg=6
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" NEOPLETE CONFIG """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" IndentLine Settings """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:indentLine_char = '┊'
+" let g:indentLine_char = '.'
+" let g:indentLine_color_term = 30
+" let g:indentLine_bgcolor_term = 10
+" exe "IndentLinesToggle"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

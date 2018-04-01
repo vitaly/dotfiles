@@ -1,38 +1,60 @@
-"call dein#add('')
+"Plug ''
 "
-"call dein#add('guns/xterm-color-table.vim')
-"call dein#add('hashivim/vim-terraform')
-"gcall dein#add('irrationalistic/vim-tasks')
-"call dein#add('powerman/vim-plugin-AnsiEsc')
-"call dein#add('slashmili/alchemist.vim')
-"call dein#add('justinmk/vim-sneak')
-
-call dein#add('tsaleh/vim-align')
-"call dein#add('junegunn/vim-easy-align')
-
-call dein#add('vimwiki/vimwiki')
-call dein#add('slim-template/vim-slim')
-
-call dein#add('tpope/vim-liquid')
-call dein#add('maksimr/vim-jsbeautify')
+"Plug 'guns/xterm-color-table.vim'
+"Plug 'hashivim/vim-terraform'
+"Plug 'irrationalistic/vim-tasks'
+"Plug 'powerman/vim-plugin-AnsiEsc'
+"Plug 'slashmili/alchemist.vim'
+"Plug 'justinmk/vim-sneak'
 
 
-call dein#add('hecal3/vim-leader-guide')
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Plug 'tsaleh/vim-align'
+Plug 'junegunn/vim-easy-align'
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(LiveEasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(LiveEasyAlign)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-"call dein#add('easymotion/vim-easymotion')
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_folding = "list"
+let g:vimwiki_listsyms = ' *x'
+let g:vimwiki_listsym_rejected = '-'
+" let g:vimwiki_listsyms = ' *✓'
+" let g:vimwiki_listsym_rejected = '✗'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+Plug 'slim-template/vim-slim'
+
+Plug 'tpope/vim-liquid'
+Plug 'maksimr/vim-jsbeautify'
+
+
+Plug 'hecal3/vim-leader-guide'
+
+
+"Plug 'easymotion/vim-easymotion'
 "map <Leader>j <Plug>(easymotion-prefix)
 
 
-call dein#add('justinmk/vim-sneak')
+Plug 'justinmk/vim-sneak'
 
 
-call dein#add('jceb/vim-orgmode')
-call dein#add('tpope/vim-speeddating')
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
 
 
 
-call dein#add('wsdjeg/FlyGrep.vim')
+Plug 'wsdjeg/FlyGrep.vim'
 
 nnoremap <plug>fly-grep       :FlyGrep<cr>
 nmap <plug>smart-search <plug>fly-grep
@@ -40,33 +62,24 @@ nmap <plug>smart-search <plug>fly-grep
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COMPLETION """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
 "call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 
-
-" https://github.com/Shougo/neco-vim
-"call dein#add('Shougo/neco-vim')
-
 " https://github.com/thalesmello/webcomplete.vim
-"call dein#add('thalesmello/webcomplete.vim')
+"Plug 'thalesmello/webcomplete.vim'
 
-"call dein#add('kbrw/elixir.nvim')
+"Plug 'kbrw/elixir.nvim'
 
 " https://github.com/castwide/solargraph
-"call dein#add('uplus/deoplete-solargraph')
-"call dein#add('hackhowtofaq/vim-solargraph')
+"Plug 'uplus/deoplete-solargraph'
+"Plug 'hackhowtofaq/vim-solargraph'
 "
-"call dein#add('wellle/tmux-complete.vim')
+
+
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call dein#add('haya14busa/incsearch.vim')
-call dein#add('haya14busa/incsearch-fuzzy.vim')
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
 map /   <Plug>(incsearch-forward)
 map ?   <Plug>(incsearch-backward)
 map g/  <Plug>(incsearch-stay)
@@ -76,7 +89,7 @@ map zg/ <Plug>(incsearch-fuzzy-stay)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call dein#add('osyo-manga/vim-over')
+Plug 'osyo-manga/vim-over'
 let g:over#command_line#paste_escape_chars = '/.*$^~['
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -92,24 +105,25 @@ augroup END
 
 
 
-call dein#add('tpope/vim-projectionist')
+Plug 'tpope/vim-projectionist'
 
 
-call dein#add('neomake/neomake')
+Plug 'neomake/neomake'
 
 
-call dein#add('joshdick/onedark.vim')
+Plug 'joshdick/onedark.vim'
 
-call dein#add('tmux-plugins/vim-tmux-focus-events')
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
-"call dein#add('')
+Plug 'rafi/awesome-vim-colorschemes'
+
+"Plug ''
+"Plug ''
+"Plug ''
+"Plug ''
+"Plug ''
+"Plug ''
+"Plug ''
+"Plug ''
+"Plug ''
 "
