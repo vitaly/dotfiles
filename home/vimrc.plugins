@@ -22,7 +22,7 @@ nmap ga <Plug>(LiveEasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 let g:vimwiki_folding = "list"
 let g:vimwiki_listsyms = ' *x'
 let g:vimwiki_listsym_rejected = '-'
@@ -60,22 +60,6 @@ nnoremap <plug>fly-grep       :FlyGrep<cr>
 nmap <plug>smart-search <plug>fly-grep
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COMPLETION """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
-
-" https://github.com/thalesmello/webcomplete.vim
-"Plug 'thalesmello/webcomplete.vim'
-
-"Plug 'kbrw/elixir.nvim'
-
-" https://github.com/castwide/solargraph
-"Plug 'uplus/deoplete-solargraph'
-"Plug 'hackhowtofaq/vim-solargraph'
-"
-
-
-"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'haya14busa/incsearch.vim'

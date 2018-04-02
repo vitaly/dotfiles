@@ -374,7 +374,7 @@ command! -bar -bang OMaps                               call fzf#vim#maps("o", <
 command! -bar -bang VMaps                               call fzf#vim#maps("x", <bang>0)
 command! -bar -bang CMaps                               call fzf#vim#maps("c", <bang>0)
 
-let g:UltiSnipsSnippetsDir = "~/my/config/ultisnips/"
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 let g:SuperTabDefaultCompletionType = "context"
 
@@ -398,6 +398,13 @@ hi VimwikiHeader6 ctermfg=6
 "" NEOPLETE CONFIG """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+
+let deoplete#tag#cache_limit_size = 5000000
+
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.q = '[.a-zA-Z_]\k*'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" IndentLine Settings """""""""""""""""""""""""""""""""""""""""""""""""""""""""

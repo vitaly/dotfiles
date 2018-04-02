@@ -14,7 +14,8 @@ augroup colorschemeFixes
 augroup END
 
 fu! s:jellybeans()
-  hi CursorLine ctermbg=238
+  " hi CursorLine ctermbg=238
+  " hi CursorLine cterm=underline ctermfg=none
   hi CursorColumn ctermbg=238
   hi Search ctermbg=220 ctermfg=0
 endfu
@@ -61,9 +62,21 @@ fu! s:Tomorrow_Night_Bright()
 endfu
 
 fu! s:rakr()
-  " hi CursorLine cterm=underline ctermfg=none
-  hi CursorLine cterm=none ctermbg=17 ctermfg=none
-  hi CursorColumn ctermbg=17 ctermfg=none
+  hi CursorLine cterm=underline ctermfg=none
+  " hi CursorLine cterm=none ctermbg=17 ctermfg=none
+  " hi CursorColumn ctermbg=17 ctermfg=none
+  hi CursorColumn ctermbg=233 ctermfg=none
+
+  hi VertSplit ctermbg=233
+
+  hi DiffAdd cterm=none ctermfg=193 ctermbg=22
+  hi DiffDelete ctermfg=16 ctermbg=52
+  hi DiffChange cterm=none ctermfg=235 ctermbg=3
+  hi DiffText cterm=bold ctermfg=3 ctermbg=0
+
+  hi ColorColumn ctermbg=52
+
+  hi MatchParen cterm=bold ctermfg=15 ctermbg=1
 endfu
 
 fu! s:one()

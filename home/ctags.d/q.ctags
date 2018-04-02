@@ -2,14 +2,14 @@
 --langmap=Q:.q
 
 --kinddef-Q=n,ns,namespace
+--kinddef-Q=f,fun,function
 --kinddef-Q=v,var,variable
-
 
 # system "d .test";
 --regex-Q=/^system[[:blank:]]*"d[[:blank:]]+(\.[[:alpha:]][[:alnum:]_]+)"/\1/n/{scope=set}
 
 # foo.bar: {}
-#--regex-Q=/^([[:alpha:]][[:alnum:]_.]*)[[:blank:]]*:[[:space:]]*\{/\1/f/x{scope=ref}
+--regex-Q=/^([[:alpha:]][[:alnum:]_.]*)[[:blank:]]*:[[:space:]]*\{/\1/f/x{scope=ref}
 
 # foo.bar: ...
 --regex-Q=/^([[:alpha:]][[:alnum:]_.]*)[[:blank:]]*:/\1/v/{scope=ref}
