@@ -1,6 +1,7 @@
 set background=light
 so ~/.vimrc.local/vimrc.colors
 
-call Theme('solarized8_light_low')
-" call Theme('solarized8_light_high')
-" call Theme('default');
+call Theme('light', 'gruvbox')
+" call Theme('light', 'solarized8_light_low')
+" call Theme('light', 'solarized8_light_high')
+" call Theme('light', 'default');

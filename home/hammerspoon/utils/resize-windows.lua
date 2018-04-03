@@ -31,7 +31,7 @@ function show_screen_frame()
 end
 
 function is_big(max)
-    return max.w > 3000
+    return max.w > 2500
 end
 
 function resize_width(max)

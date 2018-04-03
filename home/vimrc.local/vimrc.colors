@@ -83,6 +83,19 @@ fu! s:one()
   hi CursorLine cterm=underline
 endfu
 
+fu! s:CandyPaper()
+  hi MatchParen cterm=bold ctermfg=15 ctermbg=1
+  " hi CursorColumn
+  " hi CursorLine
+  hi CursorLine cterm=underline ctermfg=none ctermbg=none
+
+  hi Folded cterm=none ctermfg=8 ctermbg=none
+endfu
+
+fu! ResetThemeFix()
+    let s:onFix=''
+endfu
+
 fu! Theme(bg, name)
   let fname='s:' . substitute(a:name, '-', '_', 'g')
   if exists("*" . fname)
