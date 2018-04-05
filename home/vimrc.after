@@ -98,37 +98,37 @@ if has("nvim")
 endif
 
 
-nnoremap <plug>buffer-next :bn<cr>
-nmap <leader>bn <plug>buffer-next
+nnoremap <plug>buffer(next) :bn<cr>
+nmap <leader>bn <plug>buffer(next)
 
-nnoremap <plug>buffer-prev :bp<cr>
-nmap <leader>bp <plug>buffer-prev
+nnoremap <plug>buffer(prev) :bp<cr>
+nmap <leader>bp <plug>buffer(prev)
 
-nnoremap <plug>file-save-one :w<cr>
-nmap <leader>fs <plug>file-save-one
+nnoremap <plug>file(save) :w<cr>
+nmap <leader>fs <plug>file(save)
 
-nnoremap <plug>file-save-all :wa<cr>
-nmap <leader>fS <plug>file-save-all
+nnoremap <plug>file(save-all) :wa<cr>
+nmap <leader>fS <plug>file(save-all)
 
-nnoremap <plug>quit-ll :qa<cr>
-nmap <leader>qq <plug>quit-ll
+nnoremap <plug>quit(all) :qa<cr>
+nmap <leader>qq <plug>quit(all)
 
 " [F]ile [E]dit [D]otfile
-nnoremap <plug>file-edit-dotfile :e ~/.vimrc.after<cr>
-nmap <leader>fed <plug>file-edit-dotfile
+nnoremap <plug>(.vimrc.after) :e ~/.vimrc.after<cr>
+nmap <leader>fed <plug>(.vimrc.after)
 
-nnoremap <plug>file-open-local-dotvim :e ~/.vimrc.local<cr>
-nmap <leader>fel <plug>file-open-local-dotvim
+nnoremap <plug>(.vimrc.local) :e ~/.vimrc.local<cr>
+nmap <leader>fel <plug>(.vimrc.local)
 
-nnoremap <plug>file-edit-plugins :e ~/.vimrc.plugins<cr>
-nmap <leader>fep <plug>file-edit-plugins
+nnoremap <plug>(.vimrc.plugins) :e ~/.vimrc.plugins<cr>
+nmap <leader>fep <plug>(.vimrc.plugins)
 
 
-nnoremap <plug>window-h-max    <C-w><bar>
-nmap     <leader>w<bar>        <plug>window-h-max
+nnoremap <plug>window(h-max)    <C-w><bar>
+nmap     <leader>w<bar>        <plug>window(h-max)
 
-nnoremap <plug>window-v-max    <C-w>_
-nmap     <leader>w_            <plug>window-v-max
+nnoremap <plug>window(v-max)    <C-w>_
+nmap     <leader>w_            <plug>window(v-max)
 
 nnoremap <plug>windows-balance <C-w>=
 nmap     <leader>w=            <plug>windows-balance
@@ -136,61 +136,61 @@ nmap     <leader>w=            <plug>windows-balance
 nnoremap <plug>windows-swap    <C-w>x
 nmap     <leader>wx            <plug>windows-swap
 
-nnoremap <plug>window-maximize <C-w>_<C-w><Bar>
-nmap     <leader>wz            <plug>window-maximize
-nmap     <C-w>z                <plug>window-maximize
+nnoremap <plug>window(maximize) <C-w>_<C-w><Bar>
+nmap     <leader>wz            <plug>window(maximize)
+nmap     <C-w>z                <plug>window(maximize)
 
 
 
-nmap <plug>window-up    :TmuxNavigateUp<CR>
-nmap <leader>wk         <plug>window-up
+nmap <plug>window(up)    :TmuxNavigateUp<CR>
+nmap <leader>wk         <plug>window(up)
 
-nmap <plug>window-down  :TmuxNavigateDown<CR>
-nmap <leader>wj         <plug>window-down
+nmap <plug>window(down)  :TmuxNavigateDown<CR>
+nmap <leader>wj         <plug>window(down)
 
-nmap <plug>window-left  :TmuxNavigateLeft<CR>
-nmap <leader>wh         <plug>window-left
+nmap <plug>window(left)  :TmuxNavigateLeft<CR>
+nmap <leader>wh         <plug>window(left)
 
-nmap <plug>window-right :TmuxNavigateRight<CR>
-nmap <leader>wl         <plug>window-right
-
-
-nmap <plug>window-move-up    <c-w>K
-nmap <leader>wK              <plug>window-move-up
-
-nmap <plug>window-move-down  <c-w>J
-nmap <leader>wJ              <plug>window-move-down
-
-nmap <plug>window-move-left  <c-w>H
-nmap <leader>wH              <plug>window-move-left
-
-nmap <plug>window-move-right <c-w>L
-nmap <leader>wL              <plug>window-move-right
+nmap <plug>window(right) :TmuxNavigateRight<CR>
+nmap <leader>wl         <plug>window(right)
 
 
+nmap <plug>window(move-up)    <c-w>K
+nmap <leader>wK              <plug>window(move-up)
 
-nnoremap <plug>window-h-split     :split<cr><c-w>j
-nnoremap <plug>window-v-split     :vsplit<cr><c-w>l
-nnoremap <plug>window-delete      :q<cr>
-nnoremap <plug>buffer-delete      :bd<cr>
-nnoremap <plug>window-only        <C-w>o
+nmap <plug>window(move-down)  <c-w>J
+nmap <leader>wJ              <plug>window(move-down)
+
+nmap <plug>window(move-left)  <c-w>H
+nmap <leader>wH              <plug>window(move-left)
+
+nmap <plug>window(move-right) <c-w>L
+nmap <leader>wL              <plug>window(move-right)
+
+
+
+nnoremap <plug>window(h-split)     :split<cr><c-w>j
+nnoremap <plug>window(v-split)     :vsplit<cr><c-w>l
+nnoremap <plug>window(delete)      :q<cr>
+nnoremap <plug>buffer(delete)      :bd<cr>
+nnoremap <plug>window(only)        <C-w>o
 
 
 
 " split [W]indow [H]orizontally
-nmap <leader>ws        <plug>window-h-split
-nmap <leader>w-        <plug>window-h-split
+nmap <leader>ws        <plug>window(h-split)
+nmap <leader>w-        <plug>window(h-split)
 
 " split [W]indow [V]ertically
-nmap <leader>wv        <plug>window-v-split
-nmap <leader>w<Bslash> <plug>window-v-split
+nmap <leader>wv        <plug>window(v-split)
+nmap <leader>w<Bslash> <plug>window(v-split)
 
-nmap <leader>wd        <plug>window-delete
-nmap <leader>wq        <plug>window-delete
-nmap <leader>qw        <plug>window-delete
-nmap <leader>bd        <plug>buffer-delete
-nmap <leader>wm        <plug>window-only
-nmap <leader>wo        <plug>window-only
+nmap <leader>wd        <plug>window(delete)
+nmap <leader>wq        <plug>window(delete)
+nmap <leader>qw        <plug>window(delete)
+nmap <leader>bd        <plug>buffer(delete)
+nmap <leader>wm        <plug>window(only)
+nmap <leader>wo        <plug>window(only)
 
 
 nnoremap <leader><space> :

@@ -1,15 +1,15 @@
-
-let g:lmap =  {}
-let g:lmap.b    = { 'name': 'Buffers'        }
-let g:lmap.b    = { 'name': 'Comments'       }
-let g:lmap.f    = { 'name': 'Files'          }
-let g:lmap.S    = { 'name': 'Session'        }
+let g:lmap      = {                          }
+let g:lmap.b    = { 'name': 'Buffer'         }
+let g:lmap.c    = { 'name': 'Comment'        }
+let g:lmap.f    = { 'name': 'File'           }
+let g:lmap.f.e  = { 'name': 'Edit'           }
 let g:lmap.s    = { 'name': 'Search'         }
+let g:lmap.S    = { 'name': 'Session'        }
 let g:lmap.s.t  = { 'name': 'Tags'           }
-let g:lmap.w    = { 'name': 'Windows/Wiki'   }
 let g:lmap.t    = { 'name': 'Tags / Tabs'    }
-let g:lmap.T    = { 'name': 'Toggles'        }
+let g:lmap.T    = { 'name': 'Toggle'         }
 let g:lmap.T.c  = { 'name': 'Conceal'        }
+let g:lmap.w    = { 'name': 'Window/Wiki'    }
 let g:lmap.x    = { 'name': 'Text'           }
 let g:lmap.x.d  = { 'name': 'Delete'         }
 
@@ -29,7 +29,6 @@ let g:leaderGuide_displayfunc = [function("s:my_displayfunc")]
 
 map <leader>. <plug>leaderguide-global
 map <localleader>. <plug>leaderguide-buffer
-
 
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
