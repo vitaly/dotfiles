@@ -1,11 +1,8 @@
 set cul
 set cuc
 
-set clipboard=unnamedplus
 set foldcolumn=2
 
-set concealcursor=n
-set conceallevel=2
 
 nnoremap ` :Switch<cr>
 
@@ -15,8 +12,12 @@ let g:NERDTreeQuitOnOpen = 1
 inoremap kj <esc>l
 
 " highlight helper
-map ,L :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
-command! HI echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+
+fu! ShowHighlight()
+  echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+endfu
+map ,L :call ShowHighlight()<cr>
+command! HI call ShowHighlight()<cr>
 
 set modeline
 
@@ -30,18 +31,8 @@ nmap <leader>rr <plug>redraw
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-so ~/.vimrc.local/vimrc.colors
-if has('gui_running')
-  set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
-  " source ~/.vimrc.local/vimrc.gui.light
-  source ~/.vimrc.local/vimrc.gui.dark
-else
-  " source ~/.vimrc.local/vimrc.term.light
-  source ~/.vimrc.local/vimrc.term.dark
-end
-
 " AirlineTheme light
-AirlineTheme cool
+" AirlineTheme cool
 " AirlineTheme one
 
 "autocmd VimEnter,Colorscheme * :hi ...
@@ -211,45 +202,6 @@ nnoremap <Plug>fuzzy-files :Files<CR>
 nmap ,, <Plug>fuzzy-files
 
 
-let g:lmap =  {}
-let g:lmap.b   = { 'name': 'Buffers'      }
-let g:lmap.b   = { 'name': 'Comments'     }
-let g:lmap.f   = { 'name': 'Files'        }
-let g:lmap.s   = { 'name': 'Search'       }
-let g:lmap.s.t = { 'name': 'Tags'         }
-let g:lmap.w   = { 'name': 'Windows/Wiki' }
-let g:lmap.t   = { 'name': 'Tags / Tabs'  }
-let g:lmap.x   = { 'name': 'Text'         }
-let g:lmap.x.d = { 'name': 'Delete'       }
-
-let g:topdict = {}
-let g:topdict[' '] = g:lmap
-
-call leaderGuide#register_prefix_descriptions("", "g:topdict")
-
-function! s:my_displayfunc()
-  let g:leaderGuide#displayname =
-        \ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
-  let g:leaderGuide#displayname =
-        \ substitute(g:leaderGuide#displayname, '^<Plug>', '', '')
-endfunction
-let g:leaderGuide_displayfunc = [function("s:my_displayfunc")]
-
-
-
-
-
-map <leader>. <plug>leaderguide-global
-map <localleader>. <plug>leaderguide-buffer
-
-
-" nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-" nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
-
-"vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-"vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
-
-" set timeoutlen=500
 
 set timeoutlen=5000     " give 5s to complete mapping sequence
 
@@ -364,12 +316,10 @@ au FileType org nmap <buffer> <localleader>tp <Plug>OrgTodoBackward
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call neomake#configure#automake('rw', 1000)
 "let &errorformat ='%-C,%E  [%n] %#%f:%l: %.%#,%C%m,%Z%p^'
 
 set makeprg=make
-nmap <localleader>m :Neomake!<cr>
-  nmap <leader>M <c-w><c-s>:te make<cr>
+nmap <leader>M <c-w><c-s>:te make<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -bar -bang IMaps                               call fzf#vim#maps("i", <bang>0)
@@ -417,8 +367,22 @@ let g:deoplete#keyword_patterns.q = '[.a-zA-Z_]\k*'
 " let g:indentLine_bgcolor_term = 10
 " exe "IndentLinesToggle"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+source ~/.vimrc.local/vimrc.toggles
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+so ~/.vimrc.local/vimrc.colors
+if has('gui_running')
+  set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h8
+  " source ~/.vimrc.local/vimrc.gui.light
+  source ~/.vimrc.local/vimrc.gui.dark
+else
+  " source ~/.vimrc.local/vimrc.term.light
+  source ~/.vimrc.local/vimrc.term.dark
+end
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+so ~/.vimrc.local/vimrc.leaderguide
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

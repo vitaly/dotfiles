@@ -92,6 +92,10 @@ fu! s:CandyPaper()
   hi Folded cterm=none ctermfg=8 ctermbg=none
 endfu
 
+fu! s:base16_atelierseaside()
+  hi CursorLine cterm=underline ctermbg=none
+endfu
+
 fu! ResetThemeFix()
     let s:onFix=''
 endfu

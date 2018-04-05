@@ -20,14 +20,6 @@ nmap ga <Plug>(LiveEasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-let g:vimwiki_folding = "list"
-let g:vimwiki_listsyms = ' *x'
-let g:vimwiki_listsym_rejected = '-'
-" let g:vimwiki_listsyms = ' *✓'
-" let g:vimwiki_listsym_rejected = '✗'
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -55,7 +47,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'wsdjeg/FlyGrep.vim'
 
 nnoremap <plug>fly-grep       :FlyGrep<cr>
-nmap     <plug>search(smaret) <plug>fly-grep
+nmap     <plug>search(smart) <plug>fly-grep
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -89,7 +81,9 @@ augroup END
 Plug 'tpope/vim-projectionist'
 
 
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
+" call neomake#configure#automake('rw', 1000)
+" nmap <localleader>m :Neomake!<cr>
 
 
 Plug 'joshdick/onedark.vim'
@@ -103,8 +97,16 @@ Plug 'flazz/vim-colorschemes'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'chriskempson/base16-vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug ''
+let g:vimwiki_listsyms = ' *x'
+let g:vimwiki_listsym_rejected = '-'
+" let g:vimwiki_listsyms = ' *✓'
+" let g:vimwiki_listsym_rejected = '✗'
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeHijackNetrw = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ " let g:lightline = {  'colorscheme': 'PaperColor light',  }
 "Plug ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug ''

@@ -1,0 +1,32 @@
+set concealcursor=n
+fu! Toggle_concealcursor()
+  if 'n' == &concealcursor
+    set concealcursor=
+  else
+    set concealcursor=n
+  endif
+endfu
+map <plug>toggle(conceal-cursor)  :call Toggle_concealcursor()<cr>
+nmap <leader>Tcc <plug>toggle(conceal-cursor)
+
+set conceallevel=2
+fu! Toggle_conceallevel()
+  if 0 == &conceallevel
+    set conceallevel=2
+  else
+    set conceallevel=0
+  endif
+endfu
+map <plug>toggle(conceal-level)  :call Toggle_conceallevel()<cr>
+nmap <leader>Tcl <plug>toggle(conceal-level)
+
+set clipboard=unnamedplus
+fu! Toggle_clipboard()
+  if 'unnamedplus' == &clipboard
+    set clipboard=
+  else
+    set clipboard=unnamedplus
+  endif
+endfu
+map <silent> <plug>toggle(clipboard)  :call Toggle_clipboard()<cr>
+nmap <leader>TC <plug>toggle(clipboard)
