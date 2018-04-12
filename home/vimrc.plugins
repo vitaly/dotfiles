@@ -97,11 +97,19 @@ Plug 'flazz/vim-colorschemes'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'chriskempson/base16-vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_listsyms = ' *x'
+let g:vimwiki_listsyms = ' *X'
 let g:vimwiki_listsym_rejected = '-'
 " let g:vimwiki_listsyms = ' *✓'
 " let g:vimwiki_listsym_rejected = '✗'
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let s:wiki = {}
+let s:wiki.path = '~/wiki/'
+" let s:wiki.syntax = 'markdown'
+" let s:wiki.ext = '.wiki'
+" let s:wiki.nested_syntaxes = {'q': 'q', 'ruby': 'ruby', 'python': 'python'}
+" let s:wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+let g:vimwiki_list = [s:wiki]
+
+" let g:automatic_nested_syntaxes = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeHijackNetrw = 1
@@ -114,9 +122,12 @@ nmap <leader>TT <plug>toggle(tagbar)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug ''
+" Plug 'xolox/vim-notes'
+" let g:notes_directories = ['~/notes']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug ''
+Plug 'tbabej/taskwiki'
+Plug 'powerman/vim-plugin-AnsiEsc'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
