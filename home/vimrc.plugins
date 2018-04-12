@@ -97,12 +97,15 @@ Plug 'flazz/vim-colorschemes'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'chriskempson/base16-vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_listsyms = ' *X'
-let g:vimwiki_listsym_rejected = '-'
+let g:vimwiki_listsyms = ' SX'
+let g:vimwiki_listsym_rejected = 'D'
+
 " let g:vimwiki_listsyms = ' *✓'
 " let g:vimwiki_listsym_rejected = '✗'
+"
 let s:wiki = {}
 let s:wiki.path = '~/wiki/'
+
 " let s:wiki.syntax = 'markdown'
 " let s:wiki.ext = '.wiki'
 " let s:wiki.nested_syntaxes = {'q': 'q', 'ruby': 'ruby', 'python': 'python'}
