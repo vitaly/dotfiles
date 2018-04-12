@@ -3,6 +3,7 @@ set cuc
 
 set foldcolumn=2
 
+set relativenumber!
 
 nnoremap ` :Switch<cr>
 
@@ -31,11 +32,6 @@ nmap <leader>rr <plug>redraw
 """"""""""""""""""""""""""" COLORS """""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" AirlineTheme light
-" AirlineTheme cool
-" AirlineTheme one
-
-"autocmd VimEnter,Colorscheme * :hi ...
 
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -377,14 +373,27 @@ if has('gui_running')
   " source ~/.vimrc.local/vimrc.gui.light
   source ~/.vimrc.local/vimrc.gui.dark
 else
-  " source ~/.vimrc.local/vimrc.term.light
-  source ~/.vimrc.local/vimrc.term.dark
+  source ~/.vimrc.local/vimrc.term.light
+  " source ~/.vimrc.local/vimrc.term.dark
 end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 so ~/.vimrc.local/vimrc.leaderguide
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <silent> <localleader>K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <localleader>gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> ,<F2> :call LanguageClient#textDocument_rename()<CR>
+" noremap <localleader>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AirlineTheme light
+" AirlineTheme cool
+" AirlineTheme one
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

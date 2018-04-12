@@ -93,7 +93,11 @@ fu! s:CandyPaper()
 endfu
 
 fu! s:base16_atelierseaside()
-  hi CursorLine cterm=underline ctermbg=none
+  hi CursorLine cterm=underline ctermbg=none gui=underline guibg=none guifg=none
+  hi WildMenu ctermfg=yellow ctermbg=blue guifg=yellow guibg=blue
+  hi Search ctermfg=8 ctermbg=3 guifg=blue guibg=#00ff00
+  hi Search ctermfg=8 ctermbg=3 guifg=#000000 guibg=#bbbb00
+  hi StatusLine ctermfg=12 ctermbg=11 guifg=white guibg=#5e6e5e
 endfu
 
 fu! ResetThemeFix()

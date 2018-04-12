@@ -3,8 +3,6 @@ so ~/.vimrc.local/vimrc.colors
 
 call ResetThemeFix()
 
-
-
 call Theme('dark', 'base16-atelierseaside')
 
 " call Theme('dark', 'rakr')

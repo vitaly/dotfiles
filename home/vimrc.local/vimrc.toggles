@@ -30,3 +30,12 @@ fu! Toggle_clipboard()
 endfu
 map <silent> <plug>toggle(clipboard)  :call Toggle_clipboard()<cr>
 nmap <leader>TC <plug>toggle(clipboard)
+
+" map <plug>toggle(statusline) :AirlineToggle<cr>
+" nmap <leader>TS <plug>toggle(statusline)
+
+noremap <silent> <plug>toggle(relativenumber) :set relativenumber!<cr>
+nmap <leader>Tr <plug>toggle(relativenumber)
+
+noremap <silent> <plug>toggle(readonly) :set ro!<cr>
+nmap <leader>TR <plug>toggle(readonly)
