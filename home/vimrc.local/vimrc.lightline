@@ -45,7 +45,29 @@ endfunction
 
 let g:lightline = {}
 
-let g:lightline.colorscheme = 'powerline'
+
+fu LightlineColorscheme(name)
+  let g:lightline.colorscheme = a:name
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfu
+
+
+let g:lightline.colorscheme = 'PaperColor'
+
+" call LightlineColorscheme('PaperColor')
+
+" call LightlineColorscheme('Dracula')
+" call LightlineColorscheme('materia')
+" call LightlineColorscheme('molokai')
+" call LightlineColorscheme('darcula')
+" call LightlineColorscheme('deus')
+" call LightlineColorscheme('material')
+" call LightlineColorscheme('solarized')
+" call LightlineColorscheme('Tomorrow')
+" call LightlineColorscheme('Tomorrow_Night')
+" call LightlineColorscheme('Tomorrow_Night_Blue')
 
 let g:lightline.active = {}
 let g:lightline.active.left = [

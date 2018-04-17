@@ -1,5 +1,5 @@
-set cul
-set cuc
+set cursorline
+set cursorcolumn
 
 set foldcolumn=2
 
