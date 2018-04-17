@@ -1,3 +1,5 @@
+scriptencoding utf8
+
 "Plug ''
 "
 "Plug 'irrationalistic/vim-tasks'
@@ -108,11 +110,12 @@ let s:wiki.path = '~/wiki/'
 
 " let s:wiki.syntax = 'markdown'
 " let s:wiki.ext = '.wiki'
-" let s:wiki.nested_syntaxes = {'q': 'q', 'ruby': 'ruby', 'python': 'python'}
+let s:wiki.nested_syntaxes = {'q': 'q', 'ruby': 'ruby', 'python': 'python'}
 " let s:wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
 let g:vimwiki_list = [s:wiki]
 
 " let g:automatic_nested_syntaxes = 1
+let g:taskwiki_disable_concealcursor = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeHijackNetrw = 1
@@ -131,7 +134,9 @@ nmap <leader>TT <plug>toggle(tagbar)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tbabej/taskwiki'
 Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'blindFS/vim-taskwarrior'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_define_advanced_commands = 1
 "Plug ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug ''

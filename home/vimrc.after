@@ -79,10 +79,14 @@ nmap <leader>H :Helptags<cr>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
+let g:gutentags_project_root += [ '.ctags.d', 'tags' ]
+" echo g:gutentags_project_root
 
 set mouse=nvc
 
-let g:gutentags_ctags_executable_javascript = "~/bin/jstags.sh"
+" :GutentagsToggleTrace
+let g:gutentags_generate_on_new = 0
+let g:gutentags_generate_on_missing = 0
 
 " nvim-only config
 if has("nvim")

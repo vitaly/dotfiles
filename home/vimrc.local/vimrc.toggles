@@ -1,9 +1,9 @@
-set concealcursor=n
+set concealcursor=
 fu! Toggle_concealcursor()
-  if 'n' == &concealcursor
-    set concealcursor=
-  else
+  if '' == &concealcursor
     set concealcursor=n
+  else
+    set concealcursor=
   endif
 endfu
 map <plug>toggle(conceal-cursor)  :call Toggle_concealcursor()<cr>
