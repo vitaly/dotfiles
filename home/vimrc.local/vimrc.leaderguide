@@ -13,8 +13,13 @@ let g:lmap.w    = { 'name': 'Window/Wiki'    }
 let g:lmap.x    = { 'name': 'Text'           }
 let g:lmap.x.d  = { 'name': 'Delete'         }
 
+let g:llmap     = {                          }
+let g:llmap.a   = { 'name': 'Apidock'        }
+let g:llmap.l   = { 'name': 'Language'       }
+
 let g:topdict = {}
 let g:topdict[' '] = g:lmap
+let g:topdict[','] = g:llmap
 
 " let g:leaderGuide_vertical = 1
 call leaderGuide#register_prefix_descriptions("", "g:topdict")

@@ -1,3 +1,7 @@
+" set t_Co=256
+" set t_AB=^[[48;5;%dm
+" set t_AF=^[[38;5;%dm
+" set notermguicolors
 set cursorline
 set cursorcolumn
 
@@ -6,9 +10,6 @@ set foldcolumn=2
 set relativenumber!
 
 nnoremap ` :Switch<cr>
-
-let g:nerdtree_tabs_open_on_gui_startup = 0
-let g:NERDTreeQuitOnOpen = 1
 
 inoremap kj <esc>l
 
@@ -123,6 +124,8 @@ nmap <leader>fel <plug>(.vimrc.local)
 nnoremap <plug>(.vimrc.plugins) :e ~/.vimrc.plugins<cr>
 nmap <leader>fep <plug>(.vimrc.plugins)
 
+nnoremap <plug>(.vimrc) :e ~/.vim/vimrc<cr>
+nmap <leader>fev <plug>(.vimrc)
 
 nnoremap <plug>window(h-max)    <C-w><bar>
 nmap     <leader>w<bar>        <plug>window(h-max)
@@ -174,6 +177,7 @@ nnoremap <plug>window(v-split)     :vsplit<cr><c-w>l
 nnoremap <plug>window(delete)      :q<cr>
 nnoremap <plug>buffer(delete)      :bd<cr>
 nnoremap <plug>window(only)        <C-w>o
+nnoremap <plug>window(zoom)        :ZoomWinTabToggle<CR>
 
 
 
@@ -190,7 +194,7 @@ nmap <leader>wq        <plug>window(delete)
 nmap <leader>qw        <plug>window(delete)
 nmap <leader>bd        <plug>buffer(delete)
 nmap <leader>wm        <plug>window(only)
-nmap <leader>wo        <plug>window(only)
+nmap <leader>wo        <plug>window(zoom)
 
 
 nnoremap <leader><space> :
@@ -388,11 +392,20 @@ so ~/.vimrc.local/vimrc.leaderguide
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <plug>lang(type-info) :call LanguageClient#textDocument_hover()<CR>
+noremap <plug>lang(goto)      :call LanguageClient#textDocument_definition()<CR>
+noremap <plug>lang(rename)    :call LanguageClient#textDocument_rename()<CR>
+noremap <plug>lang(sym)       :call LanguageClient#textDocument_documentSymbol()<CR>
+noremap <plug>lang(refs)      :call LanguageClient#textDocument_references()<CR>
+noremap <plug>lang(actions)   :call LanguageClient#textDocument_codeAction()<CR>
 
-nnoremap <silent> <localleader>K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <localleader>gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> ,<F2> :call LanguageClient#textDocument_rename()<CR>
-" noremap <localleader>
+nmap <silent> <localleader>K   <plug>lang(type-info)
+nmap <silent> <localleader>lg  <plug>lang(goto)
+nmap <silent> <localleader>lR  <plug>lang(rename)
+nmap <silent> <localleader>ls  <plug>lang(sym)
+nmap <silent> <localleader>lr  <plug>lang(refs)
+nmap <silent> <localleader>la  <plug>lang(actions)
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AirlineTheme light
 " AirlineTheme cool

@@ -119,6 +119,10 @@ let g:taskwiki_disable_concealcursor = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeHijackNetrw = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_open_on_console_startup = 0
+let g:nerdtree_tabs_smart_startup_focus = 2
+let g:NERDTreeQuitOnOpen = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,10 +145,12 @@ let g:gutentags_define_advanced_commands = 1
 Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'blueyed/vim-diminactive'
+let g:diminactive_use_colorcolumn = 0
+let g:diminactive_use_syntax = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug ''
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug ''
+Plug 'troydm/zoomwintab.vim'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
