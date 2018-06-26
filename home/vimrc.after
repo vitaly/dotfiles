@@ -127,6 +127,9 @@ nmap <leader>fep <plug>(.vimrc.plugins)
 nnoremap <plug>(.vimrc) :e ~/.vim/vimrc<cr>
 nmap <leader>fev <plug>(.vimrc)
 
+nnoremap <plug>(.config/nvim) :e ~/.config/nvim<cr>
+nmap <leader>fen <plug>(.config/nvim)
+
 nnoremap <plug>window(h-max)    <C-w><bar>
 nmap     <leader>w<bar>        <plug>window(h-max)
 
@@ -388,6 +391,7 @@ end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 so ~/.vimrc.local/vimrc.leaderguide
+so ~/.vimrc.local/vimrc.preview
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -412,9 +416,16 @@ nmap <silent> <localleader>la  <plug>lang(actions)
 " AirlineTheme one
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" au! CursorHold *.js nested exe "silent! ptag " . expand("<cword>")
+" au! CursorHold *.js nested call LanguageClient#textDocument_hover()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_folding='list'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neoformat_enabled_javascript = ['prettier']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

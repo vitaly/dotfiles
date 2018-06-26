@@ -27,3 +27,6 @@ tab_width = 8
 
 [*.py]
 indent_size = 4
+
+[*.wiki]
+indent_size = 2

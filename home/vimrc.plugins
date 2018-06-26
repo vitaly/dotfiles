@@ -152,7 +152,7 @@ let g:diminactive_use_syntax = 1
 Plug 'troydm/zoomwintab.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug ''
+let g:EditorConfig_max_line_indicator = 'fill'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug ''
 "Plug ''

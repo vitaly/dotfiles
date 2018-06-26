@@ -1,3 +1,0 @@
-export POW_WORKERS=1
-export PGHOST=localhost
-export POW_EXT_DOMAINS=vk.ngrok.io

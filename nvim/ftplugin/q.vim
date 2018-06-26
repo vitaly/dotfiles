@@ -55,6 +55,9 @@ let &errorformat.=',%E  - %f: %m'
 nmap <buffer> <localleader>m :make<cr>
 
 
+nmap <buffer> <localleader>x ix<esc>[Lif<esc>:w<cr>
+nmap <buffer> <localleader>X x[Lx:w<cr>
+
 
 
 " echo &errorformat

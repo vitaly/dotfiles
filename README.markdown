@@ -12,7 +12,6 @@ The files installed:
 * ~/.gitconfig
 * ~/.gemrc
 * ~/.rdebugrc
-* ~/.powconfig
 * ~/.editrc
 * ~/.inputrc
 
