@@ -1,5 +1,6 @@
+hs.application.enableSpotlightForNameSearches(true)
 function hideApps()
-    local apps = {'Skype', 'Wunderlist', 'Mailplane 3', 'Slack', 'Messages',
+    local apps = {'Skype', 'Wunderlist', 'Mailplane', 'Slack', 'Messages',
     'Spotify', 'Telegram', 'Evernote', 'Sonos', '1Password 6', 'Finder',
     'iTunes', 'Contacts', 'Speed Download', 'Things', 'WhatsApp', 'Tweetbot',
     'Notes', 'Calendar', 'HipChat'}
