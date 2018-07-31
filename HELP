@@ -1,0 +1,5 @@
+make install - install dotfiles
+make clean   - remove installed files
+
+NOTE: When running for the first time its recommended to run clean first to remove
+      prior existing files

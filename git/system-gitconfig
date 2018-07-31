@@ -1,0 +1,69 @@
+[core]
+    editor = vim
+    quotepath = false
+
+[rerere]
+    enabled = 1
+
+[color]
+    ui = true
+
+[alias]
+    f = fetch -ptv
+    ci = commit -v
+    aci = commit --amend -CHEAD
+    co = checkout
+    st = status
+    br = branch
+    lg   = log --graph --pretty=format:'%Cred%h %Cblue%cd %Creset-%C(yellow)%d%Creset %s %Cgreen(%an)%Creset' --abbrev-commit --date=relative
+    lgt  = log --graph --pretty=format:'%h %cd -%d %s (%an)' --abbrev-commit --date=relative
+    lga  = log --graph --pretty=format:'%Cred%h %Cblue%cd %Creset-%C(yellow)%d%Creset %s %Cgreen(%an)%Creset' --abbrev-commit --date=relative --all
+    lgat = log --graph --pretty=format:'%h %cd -%d %s (%an)' --abbrev-commit --date=relative --all
+    summ = log --pretty=format:'%h %ci -%d %s (%an)' --abbrev-commit --all --date=iso
+    ls = ls-files
+    d  = diff -C --stat -p
+    dw = diff -C --stat -p --color-words
+    dww = diff -w -C --stat -p --color-words
+    dd = cat-file -p
+    tags = tag -l
+
+[push]
+    default = current
+
+[help]
+    autocorrect = 1
+
+[branch]
+    autosetuprebase = always
+
+[diff]
+    renames = copy
+    wordregex = [[:alnum:]]+|[^[:space:]]
+    compactionHeuristic = 1
+
+[pager]
+    log = %DIFF_HIGHLIGHT% | less
+    show = %DIFF_HIGHLIGHT% | less
+    diff = %DIFF_HIGHLIGHT% | less
+
+[interactive]
+    diffFilter = %DIFF_HIGHLIGHT%
+
+[merge]
+    tool = splice
+[mergetool "splice"]
+    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    trustExitCode = true
+
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+
+[rebase]
+	autosquash = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

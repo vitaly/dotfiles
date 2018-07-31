@@ -1,0 +1,24 @@
+:git
+
+~/.%
+  astrails/dotfiles home/% # all files in github astrails/dotfiles repo in directory home. link filename as ~/.filename
+  ~/.dot/home/% # take from local dir
+  ~/.dot home/%
+  home/% # ~/.dot is the default repo
+
+~/.vim/
+  astrails/dotvim
+  > cd ~/.vim; make update
+
+> ln -sfn /etc/gitconfig `GIT_EDITOR=/bin/echo git config --system -e`
+
++ /etc/hosts
+  http://someonewhocares.org/hosts/zero/hosts
+  %! grep -v localhost
+  :uncomment # /ads.imeem.com/  # other options are // or /**/ or " or <%#%> -# <!---->
+  :comment # google
+  vitaly/dotfiles hosts/localhost
+
+
+
+

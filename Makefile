@@ -1,51 +1,79 @@
-help:
-	@echo make install - install dotfiles
-	@echo make clean   - remove installed files
-	@echo
-	@echo When running for the first time its recommended to run clean first to remove prior existing files
+elp:
+	@cat HELP
+.PHONY: help
+
+EUID := $(shell id -u -r)
+ifeq (0,${EUID})
+	SUDO=
+else
+	SUDO=sudo
+endif
+
+TARGETS =
+
+${HOME}/.% : home/%
+	rm -f $@
+	ln -svfn $(abspath $<) $@
+HOMELINK_TARGETS := $(patsubst home/%,${HOME}/.%,$(shell find home -maxdepth 1))
+TARGETS += ${HOMELINK_TARGETS}
+
+${HOME}/.zsh/% : zsh/%
+	rm -f $@
+	mkdir -p $(dir $@)
+	ln -svfn $(abspath $<) $@
+ZSH_TARGETS := $(patsubst zsh/%,${HOME}/.zsh/%,$(shell find zsh -type f))
+TARGETS += ${ZSH_TARGETS}
 
 
-VIMRC_AFTER  = ~/.vimrc.after
-ZSH_LOCAL        = ~/.zsh/local
-SYSTEM_GITCONFIG = /usr/local/etc/gitconfig
-USER_GITCONFIG   = ~/.gitconfig
-GEMRC            = ~/.gemrc
-RDEBUGRC         = ~/.rdebugrc
-POWCONFIG        = ~/.powconfig
-EDITRC           = ~/.editrc
-INPUTRC          = ~/.inputrc
+ETC_DIRS := $(patsubst etc/%,/etc/%,$(shell find etc -type d -mindepth 1))
+${ETC_DIRS}:
+	sudo mkdir $@
+	sudo chown root:wheel $@
+	sudo chmod 0755 $@
 
-TARGETS := ${VIMRC_AFTER} ${ZSH_LOCAL} ${SYSTEM_GITCONFIG} ${USER_GITCONFIG} ${RDEBUGRC} ${POWCONFIG} ${EDITRC} ${INPUTRC}
+# dependency for profiel.d files on /etc/profile.d directory creation
+$(patsubst etc/%,/etc/%,$(wildcard etc/profile.d/*)): /etc/profile.d
 
-${VIMRC_AFTER}: $(abspath vimrc.after)
-	@rm -vf $@;ln -svfn $< $@
+/etc/% : etc/%
+	${SUDO} cp $< $@
+	${SUDO} chown root:wheel $@
+	${SUDO} chmod 0644 $@
+ETC_TARGETS := $(patsubst etc/%,/etc/%,$(shell find etc -type f))
+TARGETS += ${ETC_TARGETS}
 
-${ZSH_LOCAL}: $(abspath zsh-local)
-	@rm -vf $@;ln -svfn $< $@
+/etc/hosts: hosts.local hosts
+	cat $^ | ${SUDO} tee $@ > /dev/null
+	chmod 0644 $@
+	chown root:wheel $@
+TARGETS += /etc/hosts
 
-${SYSTEM_GITCONFIG}: $(abspath system-gitconfig)
-	@rm -vf $@;sudo ln -svfn $< $@
+DIFF_HIGHLIGHT ?= $(firstword $(wildcard /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight))
+ifeq (,${DIFF_HIGHLIGHT})
+  $(error diff-highlight not found, please pass DIFF_HIGHLIGHT)
+endif
 
-${USER_GITCONFIG}: $(abspath user-gitconfig)
-	@if grep CHANGE user-gitconfig; then echo EDIT user-gitconfig; false; else ln -svfn $< $@; fi
+SYSTEM_GITCONFIG ?= /usr/local/etc/gitconfig
+${SYSTEM_GITCONFIG}: git/system-gitconfig
+	${SUDO} rm -vf $@
+	${SUDO} chmod +x ${DIFF_HIGHLIGHT}
+	cat $< | sed -e "s,%DIFF_HIGHLIGHT%,${DIFF_HIGHLIGHT}," | ${SUDO} tee $@ > /dev/null
+TARGETS += ${SYSTEM_GITCONFIG}
 
-${GEMRC}: $(abspath gemrc)
-	@rm -vf $@;ln -svfn $< $@
+USER_GITCONFIG   ?= ~/.gitconfig
+${USER_GITCONFIG}: git/user-gitconfig
+	@if grep CHANGE $<; then echo EDIT user-gitconfig; false; else ln -svfn $(abspath $<) $@; fi
+TARGETS += ${USER_GITCONFIG}
 
-${RDEBUGRC}: $(abspath rdebugrc)
-	@rm -vf $@;ln -svfn $< $@
+tmux:
+	${MAKE} -C tmux
+.PHONY: tmux
 
-${POWCONFIG}: $(abspath powconfig)
-	@rm -vf $@;ln -svfn $< $@
+TARGETS += tmux
 
-${EDITRC}: $(abspath editrc)
-	@rm -vf $@;ln -svfn $< $@
-
-${INPUTRC}: $(abspath inputrc)
-	@rm -vf $@;ln -svfn $< $@
+~/.config/nvim: nvim
+	mkdir -p $@
+	chmod 0755 $@
+	ln -sfn $(abspath $<) $@
+TARGETS += ~/.config/nvim
 
 install: ${TARGETS}
-
-clean:
-	sudo rm -vf ${SYSTEM_GITCONFIG}
-	rm -vf ${TARGETS}
