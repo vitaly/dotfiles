@@ -1,4 +1,4 @@
-help:
+elp:
 	@cat HELP
 .PHONY: help
 
@@ -64,17 +64,11 @@ ${USER_GITCONFIG}: git/user-gitconfig
 	@if grep CHANGE $<; then echo EDIT user-gitconfig; false; else ln -svfn $(abspath $<) $@; fi
 TARGETS += ${USER_GITCONFIG}
 
-~/.tmux: tmux
-	rm -f $@
-	ln -svfn $(abspath $<) $@
-~/.tmux.conf: tmux/tmux.conf
-	rm -f $@
-	ln -svfn $(abspath $<) $@
-tmux/plugins/tpm:
-	mkdir -p tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm $@
+tmux:
+	${MAKE} -C tmux
+.PHONY: tmux
 
-TARGETS += ~/.tmux ~/.tmux.conf tmux/plugins/tpm
+TARGETS += tmux
 
 ~/.config/nvim: nvim
 	mkdir -p $@
