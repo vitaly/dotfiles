@@ -17,14 +17,6 @@ ${HOME}/.% : home/%
 HOMELINK_TARGETS := $(patsubst home/%,${HOME}/.%,$(shell find home -maxdepth 1))
 TARGETS += ${HOMELINK_TARGETS}
 
-${HOME}/.zsh/% : zsh/%
-	rm -f $@
-	mkdir -p $(dir $@)
-	ln -svfn $(abspath $<) $@
-ZSH_TARGETS := $(patsubst zsh/%,${HOME}/.zsh/%,$(shell find zsh -type f))
-TARGETS += ${ZSH_TARGETS}
-
-
 ETC_DIRS := $(patsubst etc/%,/etc/%,$(shell find etc -type d -mindepth 1))
 ${ETC_DIRS}:
 	sudo mkdir $@
@@ -51,29 +43,5 @@ DIFF_HIGHLIGHT ?= $(firstword $(wildcard /usr/share/doc/git/contrib/diff-highlig
 ifeq (,${DIFF_HIGHLIGHT})
   $(error diff-highlight not found, please pass DIFF_HIGHLIGHT)
 endif
-
-SYSTEM_GITCONFIG ?= /usr/local/etc/gitconfig
-${SYSTEM_GITCONFIG}: git/system-gitconfig
-	${SUDO} rm -vf $@
-	${SUDO} chmod +x ${DIFF_HIGHLIGHT}
-	cat $< | sed -e "s,%DIFF_HIGHLIGHT%,${DIFF_HIGHLIGHT}," | ${SUDO} tee $@ > /dev/null
-TARGETS += ${SYSTEM_GITCONFIG}
-
-USER_GITCONFIG   ?= ~/.gitconfig
-${USER_GITCONFIG}: git/user-gitconfig
-	@if grep CHANGE $<; then echo EDIT user-gitconfig; false; else ln -svfn $(abspath $<) $@; fi
-TARGETS += ${USER_GITCONFIG}
-
-tmux:
-	${MAKE} -C tmux
-.PHONY: tmux
-
-TARGETS += tmux
-
-~/.config/nvim: nvim
-	mkdir -p $@
-	chmod 0755 $@
-	ln -sfn $(abspath $<) $@
-TARGETS += ~/.config/nvim
 
 install: ${TARGETS}

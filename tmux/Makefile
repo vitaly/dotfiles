@@ -20,4 +20,5 @@ TMUX_DIR := /root/my/dotfiles/tmux
 
 plugins: plugins/tpm
 	plugins/tpm/bindings/install_plugins
+	tmux wait -S install-tmux
 .PHONY: plugins
