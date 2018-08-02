@@ -11,12 +11,6 @@ endif
 
 TARGETS =
 
-${HOME}/.% : home/%
-	rm -f $@
-	ln -svfn $(abspath $<) $@
-HOMELINK_TARGETS := $(patsubst home/%,${HOME}/.%,$(shell find home -maxdepth 1))
-TARGETS += ${HOMELINK_TARGETS}
-
 ETC_DIRS := $(patsubst etc/%,/etc/%,$(shell find etc -type d -mindepth 1))
 ${ETC_DIRS}:
 	sudo mkdir $@
