@@ -39,9 +39,4 @@ TARGETS += ${ETC_TARGETS}
 	chown root:wheel $@
 TARGETS += /etc/hosts
 
-DIFF_HIGHLIGHT ?= $(firstword $(wildcard /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight))
-ifeq (,${DIFF_HIGHLIGHT})
-  $(error diff-highlight not found, please pass DIFF_HIGHLIGHT)
-endif
-
 install: ${TARGETS}
